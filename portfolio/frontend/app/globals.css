@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0f0d;
+  --bg-elevated: rgba(255, 255, 255, 0.05);
+  --text: #f5f1e8;
+  --emerald: #2d5d4f;
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  --bg: #f5f1e8;
+  --bg-elevated: rgba(10, 15, 13, 0.06);
+  --text: #0a0f0d;
+  color-scheme: light;
+}
+
+html {
+  font-size: 90%;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: transparent;
+}
+
+body {
+  min-height: 100vh;
+  background: transparent;
+  color: var(--text);
+  font-family: "Inter", "Manrope", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+section {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Clear fixed navbar height (~64px) */
+section {
+  scroll-margin-top: 80px;
+}
+
+#home,
+#hero {
+  padding-top: 0 !important;
+}
+
+section:not(#home):not(#hero) {
+  padding-top: 6rem !important;
+}
+
+.hero-section,
+#home,
+#hero {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+nav,
+.fixed {
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+[class*="sticky"] {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+[class*="progress"],
+[class*="scroll-bar"] {
+  border: none !important;
+  outline: none !important;
+}
+
+section::before,
+section::after {
+  display: none !important;
+}
+
+.tilt-card {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transform: rotateX(var(--tilt-rotate-x, 0deg)) rotateY(var(--tilt-rotate-y, 0deg)) translateZ(0) translateY(calc(var(--tilt-lift, 0px) * -1));
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.skills-tilt-card {
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+.skill-orbit {
+  animation: orbitRotate 28s linear infinite;
+}
+
+.skill-orbit-item {
+  transform: translate(-50%, -50%);
+  animation: counterOrbit 28s linear infinite;
+}
+
+.skill-pos-1 {
+  top: 10%;
+  left: 50%;
+}
+
+.skill-pos-2 {
+  top: 22%;
+  left: 78%;
+}
+
+.skill-pos-3 {
+  top: 50%;
+  left: 90%;
+}
+
+.skill-pos-4 {
+  top: 75%;
+  left: 76%;
+}
+
+.skill-pos-5 {
+  top: 88%;
+  left: 50%;
+}
+
+.skill-pos-6 {
+  top: 75%;
+  left: 24%;
+}
+
+.skill-pos-7 {
+  top: 50%;
+  left: 10%;
+}
+
+.skill-pos-8 {
+  top: 22%;
+  left: 22%;
+}
+
+.skill-pos-9 {
+  top: 6%;
+  left: 78%;
+}
+
+@keyframes orbitRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes counterOrbit {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
