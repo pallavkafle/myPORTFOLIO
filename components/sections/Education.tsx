@@ -21,7 +21,7 @@ export default function Education() {
           <div className="h-px flex-1 bg-white/5" />
         </div>
         <h2 className="mb-4 text-4xl font-black leading-[1.05] tracking-tight md:text-6xl">
-          <span className="text-[#f5f1e8]">Where I'm </span>
+          <span className="text-[#f5f1e8]">Where I&apos;m </span>
           <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">learning.</span>
         </h2>
         <p className="mb-12 max-w-xl text-sm text-white/60 md:text-base">Knowledge compounds. So does effort.</p>
