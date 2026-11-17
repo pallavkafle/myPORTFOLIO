@@ -108,7 +108,7 @@ export default function Navbar() {
                 );
               })}
               <Link
-                href="/resume"
+                href="/resume.pdf" target="_blank" rel="noreferrer"
                 className="ml-2 px-4 py-2 text-sm font-medium text-emerald-400 border border-emerald-400/30 rounded-full hover:bg-emerald-400/10 hover:border-emerald-400/60 hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(52,211,153,0.1)] hover:shadow-[0_0_30px_rgba(52,211,153,0.2)]"
               >
                 Resume
@@ -148,7 +148,7 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              href="/resume"
+              href="/resume.pdf" target="_blank" rel="noreferrer"
               onClick={() => setIsMobileMenuOpen(false)}
               className="block px-3 py-2.5 text-base font-medium text-emerald-400 hover:bg-emerald-400/10 rounded-lg transition-colors duration-200"
             >

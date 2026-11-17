@@ -86,7 +86,7 @@ export default function Hero() {
             <a href="#projects" className="rounded-full bg-[#2d5d4f] px-6 py-3 text-sm font-semibold text-[#f5f1e8] transition-transform hover:-translate-y-0.5 hover:bg-[#356a5a]">
               View Projects
             </a>
-            <a href="/resume.pdf" download="Pallav_Kafle_Resume.pdf" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-text/90 backdrop-blur-md transition-colors hover:bg-white/10">
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-text/90 backdrop-blur-md transition-colors hover:bg-white/10">
               Download Resume
             </a>
             <a href="#contact" className="rounded-full px-2 py-3 text-sm font-semibold text-text/85 transition-colors hover:text-[#e8d48a]">
