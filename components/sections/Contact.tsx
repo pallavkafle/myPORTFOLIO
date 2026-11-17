@@ -1,27 +1,29 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { Github, Instagram, Linkedin, Mail, Phone } from "lucide-react";
-import { FormEvent, useMemo, useState } from "react";
+import { Github, Instagram, Linkedin, Mail } from "lucide-react";
+import { FormEvent, useState } from "react";
 import Card from "@/components/ui/Card";
 
 type FormState = {
   name: string;
   email: string;
   message: string;
+  website: string;
 };
 
 const initialState: FormState = {
   name: "",
   email: "",
-  message: ""
+  message: "",
+  website: "",
 };
 
 const contactLinks = [
   { label: "GitHub", href: "https://github.com/pallavkafle", icon: Github },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/pallav-kafle-97701727b/", icon: Linkedin },
   { label: "Instagram", href: "https://www.instagram.com/pallav_kafle", icon: Instagram },
-  { label: "Email", href: "mailto:kaflepallav39@gmail.com", icon: Mail }
+  { label: "Email", href: "mailto:kaflepallav39@gmail.com", icon: Mail },
 ];
 
 export default function Contact() {
@@ -30,11 +32,11 @@ export default function Contact() {
   const [message, setMessage] = useState("");
   const reducedMotion = useReducedMotion();
 
-  const apiBase = useMemo(() => process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000", []);
-
-  const handleChange = (field: keyof FormState) => (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormState((current) => ({ ...current, [field]: event.target.value }));
-  };
+  const handleChange =
+    (field: keyof FormState) =>
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setFormState((current) => ({ ...current, [field]: event.target.value }));
+    };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -55,10 +57,10 @@ export default function Contact() {
       setStatus("loading");
       setMessage("");
 
-      const response = await fetch(`${apiBase}/api/contact`, {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formState)
+        body: JSON.stringify(formState),
       });
 
       if (!response.ok) {
@@ -66,11 +68,11 @@ export default function Contact() {
       }
 
       setStatus("success");
-      setMessage("Message sent successfully ✓");
+      setMessage("Message sent successfully");
       setFormState(initialState);
     } catch {
       setStatus("error");
-      setMessage("✗ failed. email: kaflepallav39@gmail.com");
+      setMessage("Failed to send. Email: kaflepallav39@gmail.com");
     }
   };
 
@@ -89,7 +91,7 @@ export default function Contact() {
           <div className="h-px flex-1 bg-white/5" />
         </div>
         <h2 className="mb-4 text-4xl font-black leading-[1.05] tracking-tight md:text-6xl">
-          <span className="text-[#f5f1e8]">Let's </span>
+          <span className="text-[#f5f1e8]">Let&apos;s </span>
           <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">connect.</span>
         </h2>
         <p className="mb-12 max-w-xl text-sm text-white/40 md:text-base">A message is the start of something.</p>
@@ -144,6 +146,20 @@ export default function Contact() {
                 />
               </label>
 
+              <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
+                <label>
+                  Leave empty
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={formState.website}
+                    onChange={handleChange("website")}
+                  />
+                </label>
+              </div>
+
               <div className="flex flex-wrap items-center gap-3">
                 <button
                   type="submit"
@@ -160,7 +176,7 @@ export default function Contact() {
                 </button>
 
                 <span className={`text-sm ${status === "success" ? "text-green-400" : status === "error" ? "text-red-400" : "text-text/55"}`}>
-                  {status === "success" ? "✓ message sent successfully" : message || "All fields are required."}
+                  {status === "success" ? "✓ message sent successfully" : message}
                 </span>
               </div>
             </form>
