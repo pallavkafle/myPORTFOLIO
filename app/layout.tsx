@@ -7,25 +7,36 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
 
+const SITE_URL = "https://pallavkafle.com.np";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://pallavkafle.com"),
-  title: "Pallav Kafle — MERN Developer & AI Enthusiast",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Pallav Kafle — MERN Developer & AI Enthusiast",
+    template: "%s · Pallav Kafle",
+  },
   description:
     "Computer Engineering student at Himalaya College of Engineering building full stack and AI-powered applications.",
-  keywords: ["MERN stack", "React", "Node.js", "AI", "Nepal developer"],
-  alternates: {
-    canonical: "https://pallavkafle.dev"
-  },
+  keywords: ["MERN stack", "React", "Node.js", "AI", "Nepal developer", "Pallav Kafle"],
+  authors: [{ name: "Pallav Kafle", url: SITE_URL }],
+  alternates: { canonical: SITE_URL },
   openGraph: {
+    type: "website",
+    siteName: "Pallav Kafle",
     title: "Pallav Kafle — MERN Developer & AI Enthusiast",
     description:
       "Computer Engineering student at Himalaya College of Engineering building full stack and AI-powered applications.",
-    url: "/",
-    images: ["/images/profile.jpg"]
+    url: SITE_URL,
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Pallav Kafle" }],
   },
   twitter: {
-    card: "summary_large_image"
-  }
+    card: "summary_large_image",
+    title: "Pallav Kafle — MERN Developer & AI Enthusiast",
+    description:
+      "Computer Engineering student at Himalaya College of Engineering building full stack and AI-powered applications.",
+    images: ["/og-image.png"],
+  },
+  icons: { icon: "/favicon.ico", apple: "/apple-icon.png" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
