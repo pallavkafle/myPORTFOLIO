@@ -8,7 +8,7 @@ const certifications = [
   {
     provider: "Broadway Infosys",
     title: "Professional MERN Stack Training",
-    meta: "45 Hours | 11 June – 11 July 2025",
+    meta: "45 Hours | 11 June â€“ 11 July 2025",
     verify: "verify.broadwayinfosys.com",
     completed: true
   },
@@ -40,7 +40,7 @@ export default function Certifications() {
           <span className="text-[#f5f1e8]">Proof of </span>
           <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">the work.</span>
         </h2>
-        <p className="mb-12 max-w-xl text-sm text-white/40 md:text-base">Learning never stops — here's the receipts.</p>
+        <p className="mb-12 max-w-xl text-sm text-white/60 md:text-base">Learning never stops â€” here's the receipts.</p>
       </motion.div>
 
       <div className="grid gap-4 lg:grid-cols-2">
@@ -53,7 +53,7 @@ export default function Certifications() {
             transition={{ duration: 0.45, delay: index * 0.05 }}
           >
             <Card className={`relative overflow-hidden rounded-2xl border bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-[#2d5d4f]/50 hover:shadow-[0_0_34px_rgba(45,93,79,0.14)] ${
-              cert.completed ? "border-[#2d5d4f]/40 shadow-[0_0_24px_rgba(45,93,79,0.12)]" : "border-white/8"
+              cert.completed ? "border-[#2d5d4f]/40 shadow-[0_0_24px_rgba(45,93,79,0.12)]" : "border-white/10"
             }`}>
               <div className={`absolute left-0 top-0 h-[3px] w-full ${cert.completed ? "bg-[#2d5d4f]" : "bg-[#e8d48a]"}`} />
               <div className="flex items-start justify-between gap-4">

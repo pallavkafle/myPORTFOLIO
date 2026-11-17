@@ -94,7 +94,7 @@ export default function Contact() {
           <span className="text-[#f5f1e8]">Let&apos;s </span>
           <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">connect.</span>
         </h2>
-        <p className="mb-12 max-w-xl text-sm text-white/40 md:text-base">A message is the start of something.</p>
+        <p className="mb-12 max-w-xl text-sm text-white/60 md:text-base">A message is the start of something.</p>
       </motion.div>
 
       <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
@@ -104,12 +104,12 @@ export default function Contact() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: reducedMotion ? 0 : 0.55 }}
         >
-          <Card className="rounded-2xl border border-white/8 bg-black/40 p-5 font-mono text-sm text-text/82 shadow-[0_0_30px_rgba(0,0,0,0.35)] backdrop-blur-xl">
+          <Card className="rounded-2xl border border-white/10 bg-black/40 p-5 font-mono text-sm text-text/80 shadow-[0_0_30px_rgba(0,0,0,0.35)] backdrop-blur-xl">
             <div className="mb-5 flex items-center gap-2 border-b border-white/10 pb-4 text-text/55">
               <span className="h-3 w-3 rounded-full bg-red-400/80" />
               <span className="h-3 w-3 rounded-full bg-yellow-400/80" />
               <span className="h-3 w-3 rounded-full bg-green-400/80" />
-              <span className="ml-3">terminal — contact.sh</span>
+              <span className="ml-3">terminal â€” contact.sh</span>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -119,7 +119,7 @@ export default function Contact() {
                   type="text"
                   value={formState.name}
                   onChange={handleChange("name")}
-                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/30 focus:border-[#2d5d4f]"
+                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/50 focus:border-[#2d5d4f]"
                   placeholder="Your name"
                 />
               </label>
@@ -130,7 +130,7 @@ export default function Contact() {
                   type="email"
                   value={formState.email}
                   onChange={handleChange("email")}
-                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/30 focus:border-[#2d5d4f]"
+                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/50 focus:border-[#2d5d4f]"
                   placeholder="name@example.com"
                 />
               </label>
@@ -141,7 +141,7 @@ export default function Contact() {
                   value={formState.message}
                   onChange={handleChange("message")}
                   rows={6}
-                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/30 focus:border-[#2d5d4f]"
+                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/50 focus:border-[#2d5d4f]"
                   placeholder="Type your message..."
                 />
               </label>
@@ -171,20 +171,20 @@ export default function Contact() {
                       sending_<span className="inline-block h-4 w-2 animate-[blink_1s_steps(2,end)_infinite] bg-[#f5f1e8]" />
                     </>
                   ) : (
-                    "send message ↵"
+                    "send message â†µ"
                   )}
                 </button>
 
                 <span className={`text-sm ${status === "success" ? "text-green-400" : status === "error" ? "text-red-400" : "text-text/55"}`}>
-                  {status === "success" ? "✓ message sent successfully" : message}
+                  {status === "success" ? "âœ“ message sent successfully" : message}
                 </span>
               </div>
             </form>
 
             <div className="mt-6 border-t border-white/10 pt-5 font-mono text-sm text-text/80">
               <div className="space-y-2">
-                <p>📧 <a className="text-[#e8d48a]" href="mailto:kaflepallav39@gmail.com">kaflepallav39@gmail.com</a></p>
-                <p>📱 <a className="text-[#e8d48a]" href="tel:+9779840795507">9840795507</a></p>
+                <p>ðŸ“§ <a className="text-[#e8d48a]" href="mailto:kaflepallav39@gmail.com">kaflepallav39@gmail.com</a></p>
+                <p>ðŸ“± <a className="text-[#e8d48a]" href="tel:+9779840795507">9840795507</a></p>
               </div>
 
               <div className="mt-5 flex flex-wrap gap-3">

@@ -74,7 +74,7 @@ export default function Hero() {
             </AnimatePresence>
           </div>
 
-          <p className="mt-5 max-w-2xl text-base leading-7 text-text/78 md:text-lg">
+          <p className="mt-5 max-w-2xl text-base leading-7 text-text/80 md:text-lg">
             Building modern web applications and exploring intelligent systems.
           </p>
 
@@ -118,13 +118,13 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.2, duration: 1 }}
-              className="mt-10 max-w-lg border-t border-white/8 pt-6"
+              className="mt-10 max-w-lg border-t border-white/10 pt-6"
             >
-              <p className="text-sm leading-relaxed font-light italic text-white/30">
+              <p className="text-sm leading-relaxed font-light italic text-white/50">
                 "The people who are crazy enough to think they can change the world are the ones who do."
               </p>
-              <p className="mt-1 text-xs tracking-widest text-white/20 uppercase">
-                — Steve Jobs
+              <p className="mt-1 text-xs tracking-widest text-white/50 uppercase">
+                â€” Steve Jobs
               </p>
             </motion.div>
           </motion.div>

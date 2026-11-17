@@ -57,11 +57,11 @@ export default function Footer() {
           </div>
 
           <div className="mt-5 text-center">
-            <p className="text-sm italic text-white/30">Technology is not just tools. It is freedom.</p>
+            <p className="text-sm italic text-white/50">Technology is not just tools. It is freedom.</p>
           </div>
 
-          <div className="mt-5 flex items-center justify-between border-t border-white/10 pt-4 text-xs text-white/20">
-            <p>© 2025 Pallav Kafle</p>
+          <div className="mt-5 flex items-center justify-between border-t border-white/10 pt-4 text-xs text-white/50">
+            <p>Â© 2025 Pallav Kafle</p>
             <p>Built with Next.js + Tailwind</p>
           </div>
         </Card>

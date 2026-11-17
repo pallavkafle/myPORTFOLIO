@@ -24,7 +24,7 @@ export default function Education() {
           <span className="text-[#f5f1e8]">Where I'm </span>
           <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">learning.</span>
         </h2>
-        <p className="mb-12 max-w-xl text-sm text-white/40 md:text-base">Knowledge compounds. So does effort.</p>
+        <p className="mb-12 max-w-xl text-sm text-white/60 md:text-base">Knowledge compounds. So does effort.</p>
       </motion.div>
 
       <div className="relative pl-8">
@@ -43,12 +43,12 @@ export default function Education() {
             <h3 className="mt-3 text-2xl font-semibold text-text">Tribhuvan University</h3>
             <p className="mt-2 text-lg text-text/80">B.E. Computer Engineering</p>
 
-            <div className="mt-5 flex flex-wrap gap-3 text-sm text-text/72">
+            <div className="mt-5 flex flex-wrap gap-3 text-sm text-text/70">
               <span className="rounded-full border border-white/10 bg-black/25 px-4 py-2">7th Semester</span>
               <span className="rounded-full border border-white/10 bg-black/25 px-4 py-2">Expected Graduation: 2084 B.S.</span>
             </div>
 
-            <p className="mt-5 leading-7 text-text/72">Focus: Full Stack Development + AI Engineering</p>
+            <p className="mt-5 leading-7 text-text/70">Focus: Full Stack Development + AI Engineering</p>
           </Card>
         </motion.div>
 

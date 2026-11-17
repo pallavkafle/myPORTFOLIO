@@ -34,7 +34,7 @@ const projects: Project[] = [
       "Toast notifications",
       "Responsive dashboard"
     ],
-    status: "Built — currently undeployed (free hosting inactive)",
+    status: "Built â€” currently undeployed (free hosting inactive)",
     future: "AI spending insights, budgeting, receipt scanning",
     github: "https://github.com/pallavkafle"
   },
@@ -74,7 +74,7 @@ export default function Projects() {
             <span className="text-[#f5f1e8]">Things I've </span>
             <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">built.</span>
           </h2>
-          <p className="mb-12 max-w-xl text-sm text-white/40 md:text-base">Real problems. Real solutions. Real code.</p>
+          <p className="mb-12 max-w-xl text-sm text-white/60 md:text-base">Real problems. Real solutions. Real code.</p>
         </motion.div>
 
         <div className="grid gap-4 lg:grid-cols-2">
@@ -96,7 +96,7 @@ export default function Projects() {
                     setSelectedProject(project);
                   }
                 }}
-                className="group relative overflow-hidden rounded-2xl border border-white/8 bg-[rgba(255,255,255,0.03)] p-5 text-left backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] hover:border-[#2d5d4f]/50"
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[rgba(255,255,255,0.03)] p-5 text-left backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] hover:border-[#2d5d4f]/50"
               >
                 <div className="absolute left-0 top-0 h-[3px] w-full bg-gradient-to-r from-[#2d5d4f] to-[#1a7a4a]" />
                 <div className="flex items-start justify-between gap-4">
@@ -123,7 +123,7 @@ export default function Projects() {
 
                 <div className="mt-4 flex items-center justify-between gap-3">
                   <p className="text-sm text-text/65">Hover for summary. Click to open.</p>
-                  <span className="text-sm font-medium text-[#2d5d4f]">View Case Study →</span>
+                  <span className="text-sm font-medium text-[#2d5d4f]">View Case Study â†’</span>
                 </div>
               </Card>
             </motion.div>
@@ -172,7 +172,7 @@ export default function Projects() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-[#e8d48a]">Tech Stack</p>
-                    <p className="mt-2 leading-7 text-text/75">{selectedProject.stack.join(" · ")}</p>
+                    <p className="mt-2 leading-7 text-text/75">{selectedProject.stack.join(" Â· ")}</p>
                   </div>
                 </div>
 

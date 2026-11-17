@@ -3,15 +3,15 @@
 import { motion } from "framer-motion";
 
 const skills = [
-  { name: "React", category: "Frontend", emoji: "⚛️", color: "blue", desc: "Component-based UI with hooks, virtual DOM, and rich ecosystem for interactive web apps." },
-  { name: "JavaScript", category: "Frontend", emoji: "⚡", color: "yellow", desc: "ES6+, async/await, closures, and functional programming for dynamic web experiences." },
-  { name: "Node.js", category: "Backend", emoji: "🟢", color: "green", desc: "JavaScript runtime for fast, scalable server-side apps and RESTful APIs." },
-  { name: "Python", category: "Backend", emoji: "🐍", color: "emerald", desc: "Scripting, data processing, web backends, and exploring AI/ML integrations." },
-  { name: "MongoDB", category: "Database", emoji: "🍃", color: "green", desc: "NoSQL document database with flexible schemas for modern apps and rapid iteration." },
-  { name: "Next.js", category: "Fullstack", emoji: "▲", color: "purple", desc: "React framework with SSR, SSG, API routes, and file-based routing for production apps." },
-  { name: "Express.js", category: "Backend", emoji: "🚂", color: "emerald", desc: "Minimal Node.js framework for building clean REST APIs and middleware chains." },
-  { name: "Git", category: "Tools", emoji: "🔧", color: "orange", desc: "Version control for tracking changes, branching strategies, and team collaboration." },
-  { name: "HTML/CSS", category: "Frontend", emoji: "🎨", color: "blue", desc: "Semantic markup and modern CSS including Flexbox, Grid, and animations." }
+  { name: "React", category: "Frontend", emoji: "âš›ï¸", color: "blue", desc: "Component-based UI with hooks, virtual DOM, and rich ecosystem for interactive web apps." },
+  { name: "JavaScript", category: "Frontend", emoji: "âš¡", color: "yellow", desc: "ES6+, async/await, closures, and functional programming for dynamic web experiences." },
+  { name: "Node.js", category: "Backend", emoji: "ðŸŸ¢", color: "green", desc: "JavaScript runtime for fast, scalable server-side apps and RESTful APIs." },
+  { name: "Python", category: "Backend", emoji: "ðŸ", color: "emerald", desc: "Scripting, data processing, web backends, and exploring AI/ML integrations." },
+  { name: "MongoDB", category: "Database", emoji: "ðŸƒ", color: "green", desc: "NoSQL document database with flexible schemas for modern apps and rapid iteration." },
+  { name: "Next.js", category: "Fullstack", emoji: "â–²", color: "purple", desc: "React framework with SSR, SSG, API routes, and file-based routing for production apps." },
+  { name: "Express.js", category: "Backend", emoji: "ðŸš‚", color: "emerald", desc: "Minimal Node.js framework for building clean REST APIs and middleware chains." },
+  { name: "Git", category: "Tools", emoji: "ðŸ”§", color: "orange", desc: "Version control for tracking changes, branching strategies, and team collaboration." },
+  { name: "HTML/CSS", category: "Frontend", emoji: "ðŸŽ¨", color: "blue", desc: "Semantic markup and modern CSS including Flexbox, Grid, and animations." }
 ];
 
 const badgeStyle: Record<string, string> = {
@@ -38,10 +38,10 @@ export default function Skills() {
           <div className="h-px flex-1 bg-white/5" />
         </div>
         <h2 className="mb-4 text-4xl font-black leading-[1.05] tracking-tight md:text-6xl">
-          <span className="text-[#f5f1e8]">⚔️ Skills in </span>
+          <span className="text-[#f5f1e8]">âš”ï¸ Skills in </span>
           <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">My Arsenal</span>
         </h2>
-        <p className="mb-12 max-w-xl text-sm text-white/40 md:text-base">
+        <p className="mb-12 max-w-xl text-sm text-white/60 md:text-base">
           hover each card to explore the craft behind the code
         </p>
 
@@ -83,7 +83,7 @@ export default function Skills() {
           ))}
         </div>
 
-        <div className="mt-12 rounded-2xl border border-white/8 bg-white/[0.03] p-6 backdrop-blur-md">
+        <div className="mt-12 rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-md">
           <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#2d5d4f]">
             Core Strengths
           </p>

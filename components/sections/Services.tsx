@@ -66,7 +66,7 @@ export default function Services() {
           <span className="text-[#f5f1e8]">What I can </span>
           <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">do for you.</span>
         </h2>
-        <p className="mb-12 max-w-xl text-sm text-white/40 md:text-base">Built on MERN, growing toward AI.</p>
+        <p className="mb-12 max-w-xl text-sm text-white/60 md:text-base">Built on MERN, growing toward AI.</p>
       </motion.div>
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -78,12 +78,12 @@ export default function Services() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.45, delay: index * 0.04 }}
           >
-            <Card className="group relative overflow-hidden rounded-[1.75rem] border border-white/8 bg-white/5 p-5 backdrop-blur-xl transition-all duration-300 hover:border-[#2d5d4f]/50 hover:bg-white/8 hover:shadow-[0_0_32px_rgba(45,93,79,0.14)] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#2d5d4f] after:transition-all after:duration-300 hover:after:w-full">
+            <Card className="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition-all duration-300 hover:border-[#2d5d4f]/50 hover:bg-white/10 hover:shadow-[0_0_32px_rgba(45,93,79,0.14)] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#2d5d4f] after:transition-all after:duration-300 hover:after:w-full">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#2d5d4f]/30 bg-[#2d5d4f]/15 text-[#e8d48a] transition-colors group-hover:bg-[#2d5d4f]/20">
                 <service.Icon size={20} className="h-5 w-5" />
               </div>
               <h3 className="mt-4 text-lg font-semibold text-text">{service.title}</h3>
-              <p className="mt-2.5 leading-7 text-text/72">{service.description}</p>
+              <p className="mt-2.5 leading-7 text-text/70">{service.description}</p>
             </Card>
           </motion.div>
         ))}
