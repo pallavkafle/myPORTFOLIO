@@ -1,9 +1,11 @@
 "use client";
 
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa6";
 import { motion, useReducedMotion } from "framer-motion";
-import { Github, Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import {  Mail, Phone } from "lucide-react";
 import { FormEvent, useState } from "react";
 import Card from "@/components/ui/Card";
+import { SiGithub } from "react-icons/si";
 
 type FormState = {
   name: string;
@@ -20,9 +22,9 @@ const initialState: FormState = {
 };
 
 const contactLinks = [
-  { label: "GitHub", href: "https://github.com/pallavkafle", icon: Github },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/pallav-kafle-97701727b/", icon: Linkedin },
-  { label: "Instagram", href: "https://www.instagram.com/pallav_kafle", icon: Instagram },
+  { label: "FaGithub", href: "https://github.com/pallavkafle", icon: FaGithub },
+  { label: "FaLinkedIn", href: "https://www.linkedin.com/in/pallav-kafle-97701727b/", icon: FaLinkedin },
+  { label: "FaInstagram", href: "https://www.instagram.com/pallav_kafle", icon: FaInstagram },
   { label: "Email", href: "mailto:kaflepallav39@gmail.com", icon: Mail },
 ];
 

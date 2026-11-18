@@ -1,9 +1,10 @@
 "use client";
 
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa6";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { ChevronDown, Mail, Github, Instagram, Linkedin } from "lucide-react";
+import { ChevronDown, Mail,Phone } from "lucide-react";
 
 const roles = [
   "Computer Engineering Student",
@@ -12,9 +13,9 @@ const roles = [
 ];
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com/pallavkafle", label: "GitHub" },
-  { icon: Linkedin, href: "https://www.linkedin.com/in/pallav-kafle-97701727b/", label: "LinkedIn" },
-  { icon: Instagram, href: "https://www.instagram.com/pallav_kafle", label: "Instagram" },
+  { icon: FaGithub, href: "https://github.com/pallavkafle", label: "GitHub" },
+  { icon: FaLinkedin, href: "https://www.linkedin.com/in/pallav-kafle-97701727b/", label: "LinkedIn" },
+  { icon: FaInstagram, href: "https://www.instagram.com/pallav_kafle", label: "Instagram" },
   { icon: Mail, href: "mailto:kaflepallav39@gmail.com", label: "Email" }
 ];
 
