@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { Github, Instagram, Linkedin, Mail } from "lucide-react";
+import { Github, Instagram, Linkedin, Mail, Phone } from "lucide-react";
 import { FormEvent, useState } from "react";
 import Card from "@/components/ui/Card";
 
@@ -109,7 +109,7 @@ export default function Contact() {
               <span className="h-3 w-3 rounded-full bg-red-400/80" />
               <span className="h-3 w-3 rounded-full bg-yellow-400/80" />
               <span className="h-3 w-3 rounded-full bg-green-400/80" />
-              <span className="ml-3">terminal â€” contact.sh</span>
+              <span className="ml-3">terminal — contact.sh</span>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -171,20 +171,20 @@ export default function Contact() {
                       sending_<span className="inline-block h-4 w-2 animate-[blink_1s_steps(2,end)_infinite] bg-[#f5f1e8]" />
                     </>
                   ) : (
-                    "send message â†µ"
+                    "send message ↵"
                   )}
                 </button>
 
                 <span className={`text-sm ${status === "success" ? "text-green-400" : status === "error" ? "text-red-400" : "text-text/55"}`}>
-                  {status === "success" ? "âœ“ message sent successfully" : message}
+                  {status === "success" ? "✓ message sent successfully" : message}
                 </span>
               </div>
             </form>
 
             <div className="mt-6 border-t border-white/10 pt-5 font-mono text-sm text-text/80">
               <div className="space-y-2">
-                <p>ðŸ“§ <a className="text-[#e8d48a]" href="mailto:kaflepallav39@gmail.com">kaflepallav39@gmail.com</a></p>
-                <p>ðŸ“± <a className="text-[#e8d48a]" href="tel:+9779840795507">9840795507</a></p>
+                <p><Mail size={16} className="inline mr-2" /> <a className="text-[#e8d48a]" href="mailto:kaflepallav39@gmail.com">kaflepallav39@gmail.com</a></p>
+                <p><Phone size={16} className="inline mr-2" /> <a className="text-[#e8d48a]" href="tel:+9779840795507">9840795507</a></p>
               </div>
 
               <div className="mt-5 flex flex-wrap gap-3">

@@ -124,7 +124,7 @@ export default function Hero() {
                 &ldquo;The people who are crazy enough to think they can change the world are the ones who do.&rdquo;
               </p>
               <p className="mt-1 text-xs tracking-widest text-white/50 uppercase">
-                â€” Steve Jobs
+                — Steve Jobs
               </p>
             </motion.div>
           </motion.div>

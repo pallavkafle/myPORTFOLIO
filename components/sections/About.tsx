@@ -1,40 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { User, Zap, Target, Rocket, Lightbulb, BookOpen } from "lucide-react";
 import Card from "@/components/ui/Card";
 
 const cards = [
-  {
-    icon: "ðŸ‘¤",
-    title: "Who I Am",
-    content:
-      "Computer Engineering student, 7th sem, Himalaya College of Engineering, Tribhuvan University, Kathmandu"
-  },
-  {
-    icon: "âš¡",
-    title: "Why Engineering",
-    content: "Genuine excitement about technology and how systems work"
-  },
-  {
-    icon: "ðŸŽ¯",
-    title: "What Drives Me",
-    content: "Curiosity, continuous learning, building things that solve real problems"
-  },
-  {
-    icon: "ðŸš€",
-    title: "Career Vision",
-    content: "Full Stack â†’ AI Engineer â†’ independent product builder"
-  },
-  {
-    icon: "ðŸ’¡",
-    title: "Personal Philosophy",
-    content: "Technology is freedom"
-  },
-  {
-    icon: "ðŸ“š",
-    title: "Learning Mindset",
-    content: "Quality over quantity, detail-oriented, always exploring"
-  }
+  { Icon: User, title: "Who I Am", content: "Computer Engineering student, 7th sem, Himalaya College of Engineering, Tribhuvan University, Kathmandu" },
+  { Icon: Zap, title: "Why Engineering", content: "Genuine excitement about technology and how systems work" },
+  { Icon: Target, title: "What Drives Me", content: "Curiosity, continuous learning, building things that solve real problems" },
+  { Icon: Rocket, title: "Career Vision", content: "Full Stack → AI Engineer → independent product builder" },
+  { Icon: Lightbulb, title: "Personal Philosophy", content: "Technology is freedom" },
+  { Icon: BookOpen, title: "Learning Mindset", content: "Quality over quantity, detail-oriented, always exploring" }
 ];
 
 export default function About() {
@@ -56,26 +32,30 @@ export default function About() {
           <span className="text-[#f5f1e8]">A path into </span>
           <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">engineering.</span>
         </h2>
-        <p className="mb-12 max-w-xl text-sm text-white/60 md:text-base">Curious by nature. Disciplined by choice.</p>
+        <p className="mb-12 max-w-xl text-sm text-white/40 md:text-base">Curious by nature. Disciplined by choice.</p>
       </motion.div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {cards.map((card, index) => (
-          <motion.div
-            key={card.title}
-            initial={{ opacity: 0, y: 22 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.45, delay: index * 0.05 }}
-          >
-            <Card className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition-all duration-300 hover:border-[#2d5d4f]/50 hover:bg-white/10 hover:shadow-[0_0_35px_rgba(45,93,79,0.16)] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#2d5d4f] after:transition-all after:duration-300 hover:after:w-full">
-              <h3 className="mb-2 text-sm font-semibold uppercase tracking-widest text-[#e8d48a]">
-                {card.icon} {card.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-[#f5f1e8]/70">{card.content}</p>
-            </Card>
-          </motion.div>
-        ))}
+        {cards.map((card, index) => {
+          const Icon = card.Icon;
+          return (
+            <motion.div
+              key={card.title}
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: index * 0.05 }}
+            >
+              <Card className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition-all duration-300 hover:border-[#2d5d4f]/50 hover:bg-white/[0.08] hover:shadow-[0_0_35px_rgba(45,93,79,0.16)] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#2d5d4f] after:transition-all after:duration-300 hover:after:w-full">
+                <h3 className="mb-3 flex items-center gap-3 text-sm font-semibold uppercase tracking-widest text-[#e8d48a]">
+                  <Icon className="h-5 w-5 text-[#2d5d4f] group-hover:text-emerald-400 transition-colors duration-300" /> 
+                  {card.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-[#f5f1e8]/70">{card.content}</p>
+              </Card>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );

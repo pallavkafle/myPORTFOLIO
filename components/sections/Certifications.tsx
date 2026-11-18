@@ -8,7 +8,7 @@ const certifications = [
   {
     provider: "Broadway Infosys",
     title: "Professional MERN Stack Training",
-    meta: "45 Hours | 11 June â€“ 11 July 2025",
+    meta: "45 Hours | 11 June – 11 July 2025",
     verify: "verify.broadwayinfosys.com",
     completed: true
   },
@@ -40,7 +40,7 @@ export default function Certifications() {
           <span className="text-[#f5f1e8]">Proof of </span>
           <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">the work.</span>
         </h2>
-        <p className="mb-12 max-w-xl text-sm text-white/60 md:text-base">Learning never stops â€” here&apos;s the receipts.</p>
+        <p className="mb-12 max-w-xl text-sm text-white/60 md:text-base">Learning never stops — here&apos;s the receipts.</p>
       </motion.div>
 
       <div className="grid gap-4 lg:grid-cols-2">

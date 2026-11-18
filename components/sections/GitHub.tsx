@@ -96,7 +96,7 @@ export default function GitHub() {
       </motion.div>
 
       {loading ? (
-        <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-8 text-text/70 backdrop-blur-xl">Loading GitHub profileâ€¦</Card>
+        <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-8 text-text/70 backdrop-blur-xl">Loading GitHub profile…</Card>
       ) : error ? (
         <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-8 text-text/70 backdrop-blur-xl">{error}</Card>
       ) : user ? (
@@ -160,7 +160,7 @@ export default function GitHub() {
                       <p className="mt-2 line-clamp-3 text-sm leading-6 text-text/70">{repo.description ?? "No description provided."}</p>
                       <div className="mt-4 flex items-center justify-between text-xs text-text/55">
                         <span>{repo.language ?? "Unknown"}</span>
-                        <span>{repo.stargazers_count}â˜… Â· {repo.forks_count} forks</span>
+                        <span>{repo.stargazers_count}★ · {repo.forks_count} forks</span>
                       </div>
                     </a>
                   ))}

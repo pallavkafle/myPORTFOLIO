@@ -34,7 +34,7 @@ const projects: Project[] = [
       "Toast notifications",
       "Responsive dashboard"
     ],
-    status: "Built â€” currently undeployed (free hosting inactive)",
+    status: "Built — currently undeployed (free hosting inactive)",
     future: "AI spending insights, budgeting, receipt scanning",
     github: "https://github.com/pallavkafle"
   },
@@ -123,7 +123,7 @@ export default function Projects() {
 
                 <div className="mt-4 flex items-center justify-between gap-3">
                   <p className="text-sm text-text/65">Hover for summary. Click to open.</p>
-                  <span className="text-sm font-medium text-[#2d5d4f]">View Case Study â†’</span>
+                  <span className="text-sm font-medium text-[#2d5d4f]">View Case Study →</span>
                 </div>
               </Card>
             </motion.div>
@@ -172,7 +172,7 @@ export default function Projects() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-[#e8d48a]">Tech Stack</p>
-                    <p className="mt-2 leading-7 text-text/75">{selectedProject.stack.join(" Â· ")}</p>
+                    <p className="mt-2 leading-7 text-text/75">{selectedProject.stack.join(" · ")}</p>
                   </div>
                 </div>
 
