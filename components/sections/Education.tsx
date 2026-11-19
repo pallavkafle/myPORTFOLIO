@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Card from "@/components/ui/Card";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 const tags = ["Generative AI", "LLMs", "React Ecosystem", "Production Architecture"];
 
@@ -13,18 +14,17 @@ export default function Education() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.55 }}
-        className="mb-12 max-w-2xl"
       >
-        <div className="mb-4 flex items-center gap-3">
-          <div className="h-px w-8 bg-accent" />
-          <p className="font-mono text-xs font-medium uppercase tracking-[0.3em] text-accent">Education</p>
-          <div className="h-px flex-1 bg-white/5" />
-        </div>
-        <h2 className="mb-4 text-4xl font-serif font-normal leading-[1.05] tracking-tight md:text-6xl">
-          <span className="text-text">Where I&apos;m </span>
-          <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">learning.</span>
-        </h2>
-        <p className="mb-12 max-w-xl text-sm text-white/60 md:text-base">Knowledge compounds. So does effort.</p>
+        <SectionHeading
+          label="Education"
+          title={
+            <>
+              <span className="text-text">Where I&apos;m </span>
+              <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">learning.</span>
+            </>
+          }
+          subtitle="Knowledge compounds. So does effort."
+        />
       </motion.div>
 
       <div className="relative pl-8">
@@ -43,12 +43,12 @@ export default function Education() {
             <h3 className="mt-3 text-2xl font-semibold text-text">Tribhuvan University</h3>
             <p className="mt-2 text-lg text-text/80">B.E. Computer Engineering</p>
 
-            <div className="mt-5 flex flex-wrap gap-3 text-sm text-text/70">
+            <div className="mt-5 flex flex-wrap gap-3 text-sm text-text/75">
               <span className="rounded-full border border-white/10 bg-black/25 px-4 py-2">Currently Enrolled</span>
               <span className="rounded-full border border-white/10 bg-black/25 px-4 py-2">Expected Graduation: 2084 B.S.</span>
             </div>
 
-            <p className="mt-5 leading-7 text-text/70">Focus: Full Stack Development + AI Engineering</p>
+            <p className="mt-5 leading-7 text-text/75">Focus: Full Stack Development + AI Engineering</p>
           </Card>
         </motion.div>
 

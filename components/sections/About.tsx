@@ -2,13 +2,13 @@
 
 import { motion } from "framer-motion";
 import Card from "@/components/ui/Card";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 export default function About() {
   return (
     <section id="about" className="relative py-24 px-6 md:px-16">
       <div className="mx-auto max-w-6xl grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
         
-        {/* Left side: Sticky heading */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -16,21 +16,18 @@ export default function About() {
           transition={{ duration: 0.55 }}
           className="lg:sticky lg:top-32 h-fit"
         >
-          <div className="mb-4 flex items-center gap-3">
-            <div className="h-px w-8 bg-accent" />
-            <p className="font-mono text-xs font-medium uppercase tracking-[0.3em] text-accent">About</p>
-            <div className="h-px flex-1 bg-white/5 lg:hidden" />
-          </div>
-          <h2 className="mb-4 text-4xl font-serif font-normal leading-[1.05] tracking-tight md:text-6xl">
-            <span className="text-text">A path into </span>
-            <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">engineering.</span>
-          </h2>
-          <p className="max-w-xs text-sm text-white/50 md:text-base">
-            Curious by nature. Disciplined by choice.
-          </p>
+          <SectionHeading
+            label="About"
+            title={
+              <>
+                <span className="text-text">A path into </span>
+                <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">engineering.</span>
+              </>
+            }
+            subtitle="Curious by nature. Disciplined by choice."
+          />
         </motion.div>
 
-        {/* Right side: The narrative */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

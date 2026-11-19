@@ -3,6 +3,7 @@ import { Code2, Monitor, LayoutDashboard, Webhook,
          ShieldCheck, Database, Sparkles, GitBranch } from 'lucide-react';
 import { motion } from "framer-motion";
 import Card from "@/components/ui/Card";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 const services = [
   {
@@ -55,18 +56,17 @@ export default function Services() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.55 }}
-        className="mb-12 max-w-2xl"
       >
-        <div className="mb-4 flex items-center gap-3">
-          <div className="h-px w-8 bg-accent" />
-          <p className="font-mono text-xs font-medium uppercase tracking-[0.3em] text-accent">Services</p>
-          <div className="h-px flex-1 bg-white/5" />
-        </div>
-        <h2 className="mb-4 text-4xl font-serif font-normal leading-[1.05] tracking-tight md:text-6xl">
-          <span className="text-text">What I can </span>
-          <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">do for you.</span>
-        </h2>
-        <p className="mb-12 max-w-xl text-sm text-white/60 md:text-base">Built on MERN, growing toward AI.</p>
+        <SectionHeading
+          label="Services"
+          title={
+            <>
+              <span className="text-text">What I can </span>
+              <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">do for you.</span>
+            </>
+          }
+          subtitle="Built on MERN, growing toward AI."
+        />
       </motion.div>
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -78,7 +78,7 @@ export default function Services() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.45, delay: index * 0.04 }}
           >
-            <Card className="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition-all duration-300 hover:border-accent/50 hover:bg-white/10 hover:shadow-[0_0_32px_rgba(45,93,79,0.14)] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">
+            <Card className="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition-all duration-300 hover:border-accent/50 hover:bg-white/[0.08] hover:shadow-[0_0_32px_rgba(45,93,79,0.14)] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-accent/30 bg-accent/15 text-gold transition-colors group-hover:bg-accent/20">
                 <service.Icon size={20} className="h-5 w-5" />
               </div>

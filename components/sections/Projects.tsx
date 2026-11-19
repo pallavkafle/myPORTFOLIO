@@ -4,12 +4,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ExternalLink, X } from "lucide-react";
 import { useState } from "react";
 import Card from "@/components/ui/Card";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { projects, type Project } from "@/lib/data/projects";
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  // Filter out hidden projects
   const visibleProjects = projects.filter((p) => p.visible);
 
   return (
@@ -20,18 +20,17 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.55 }}
-          className="mb-10 max-w-2xl"
         >
-          <div className="mb-4 flex items-center gap-3">
-            <div className="h-px w-8 bg-accent" />
-            <p className="font-mono text-xs font-medium uppercase tracking-[0.3em] text-accent">Projects</p>
-            <div className="h-px flex-1 bg-white/5" />
-          </div>
-          <h2 className="mb-4 text-4xl font-serif font-normal leading-[1.05] tracking-tight md:text-6xl">
-            <span className="text-text">Things I&apos;ve </span>
-            <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">built.</span>
-          </h2>
-          <p className="mb-12 max-w-xl text-sm text-white/50 md:text-base">Real problems. Real solutions. Real code.</p>
+          <SectionHeading
+            label="Projects"
+            title={
+              <>
+                <span className="text-text">Things I&apos;ve </span>
+                <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">built.</span>
+              </>
+            }
+            subtitle="Real problems. Real solutions. Real code."
+          />
         </motion.div>
 
         <div className="grid gap-4 lg:grid-cols-2">

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, BadgeCheck } from "lucide-react";
 import Card from "@/components/ui/Card";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { certificates } from "@/lib/data/certificates";
 
 export default function Certifications() {
@@ -13,18 +14,17 @@ export default function Certifications() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.55 }}
-        className="mb-10 max-w-2xl"
       >
-        <div className="mb-4 flex items-center gap-3">
-          <div className="h-px w-8 bg-accent" />
-          <p className="font-mono text-xs font-medium uppercase tracking-[0.3em] text-accent">Certifications</p>
-          <div className="h-px flex-1 bg-white/5" />
-        </div>
-        <h2 className="mb-4 text-4xl font-serif font-normal leading-[1.05] tracking-tight md:text-6xl">
-          <span className="text-text">Proof of </span>
-          <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">the work.</span>
-        </h2>
-        <p className="mb-12 max-w-xl text-sm text-white/50 md:text-base">Learning never stops — here&apos;s the receipts.</p>
+        <SectionHeading
+          label="Certifications"
+          title={
+            <>
+              <span className="text-text">Proof of </span>
+              <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">the work.</span>
+            </>
+          }
+          subtitle="Learning never stops — here&apos;s the receipts."
+        />
       </motion.div>
 
       <div className="grid gap-4 lg:grid-cols-2">

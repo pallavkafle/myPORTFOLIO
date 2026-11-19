@@ -1,11 +1,11 @@
 "use client";
 
-import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa6";
 import { motion, useReducedMotion } from "framer-motion";
-import {  Mail, Phone } from "lucide-react";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa6";
+import { Mail, Phone } from "lucide-react";
 import { FormEvent, useState } from "react";
 import Card from "@/components/ui/Card";
-import { SiGithub } from "react-icons/si";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { siteConfig } from "@/lib/data/site";
 
 type FormState = {
@@ -15,19 +15,14 @@ type FormState = {
   website: string;
 };
 
-const initialState: FormState = {
-  name: "",
-  email: "",
-  message: "",
-  website: "",
-};
+const initialState: FormState = { name: "", email: "", message: "", website: "" };
 
 const contactLinks = [
   { label: "GitHub", href: siteConfig.socials.github, icon: FaGithub },
   { label: "LinkedIn", href: siteConfig.socials.linkedin, icon: FaLinkedin },
   { label: "Instagram", href: siteConfig.socials.instagram, icon: FaInstagram },
   { label: "Email", href: `mailto:${siteConfig.email}`, icon: Mail },
-];;
+];
 
 export default function Contact() {
   const [formState, setFormState] = useState<FormState>(initialState);
@@ -43,13 +38,11 @@ export default function Contact() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     if (!formState.name.trim() || !formState.email.trim() || !formState.message.trim()) {
       setStatus("error");
       setMessage("All fields are required.");
       return;
     }
-
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formState.email)) {
       setStatus("error");
       setMessage("Please enter a valid email address.");
@@ -59,17 +52,12 @@ export default function Contact() {
     try {
       setStatus("loading");
       setMessage("");
-
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formState),
       });
-
-      if (!response.ok) {
-        throw new Error("Contact request failed");
-      }
-
+      if (!response.ok) throw new Error("Contact request failed");
       setStatus("success");
       setMessage("Message sent successfully");
       setFormState(initialState);
@@ -86,18 +74,17 @@ export default function Contact() {
         whileInView={reducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: reducedMotion ? 0 : 0.55 }}
-        className="mb-12 max-w-2xl"
       >
-        <div className="mb-4 flex items-center gap-3">
-          <div className="h-px w-8 bg-accent" />
-          <p className="font-mono text-xs font-medium uppercase tracking-[0.3em] text-accent">Contact</p>
-          <div className="h-px flex-1 bg-white/5" />
-        </div>
-        <h2 className="mb-4 text-4xl font-serif font-normal leading-[1.05] tracking-tight md:text-6xl">
-          <span className="text-text">Let&apos;s </span>
-          <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">connect.</span>
-        </h2>
-        <p className="mb-12 max-w-xl text-sm text-white/60 md:text-base">A message is the start of something.</p>
+        <SectionHeading
+          label="Contact"
+          title={
+            <>
+              <span className="text-text">Let&apos;s </span>
+              <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">connect.</span>
+            </>
+          }
+          subtitle="A message is the start of something."
+        />
       </motion.div>
 
       <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
@@ -108,7 +95,7 @@ export default function Contact() {
           transition={{ duration: reducedMotion ? 0 : 0.55 }}
         >
           <Card className="rounded-2xl border border-white/10 bg-black/40 p-5 font-mono text-sm text-text/80 shadow-[0_0_30px_rgba(0,0,0,0.35)] backdrop-blur-xl">
-            <div className="mb-5 flex items-center gap-2 border-b border-white/10 pb-4 text-text/55">
+            <div className="mb-5 flex items-center gap-2 border-b border-white/10 pb-4 text-text/60">
               <span className="h-3 w-3 rounded-full bg-red-400/80" />
               <span className="h-3 w-3 rounded-full bg-yellow-400/80" />
               <span className="h-3 w-3 rounded-full bg-green-400/80" />
@@ -117,35 +104,36 @@ export default function Contact() {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <label className="block space-y-2">
-                <span className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-text/55"><span className="text-accent">&gt;</span>Name</span>
+                <span className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-text/60">
+                  <span className="text-accent">&gt;</span>Name
+                </span>
                 <input
-                  type="text"
-                  value={formState.name}
-                  onChange={handleChange("name")}
-                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/50 focus:border-accent"
-                  placeholder="Your name"
+                  type="text" value={formState.name} onChange={handleChange("name")}
+                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/30 focus:border-accent"
+                  placeholder="Your name" autoComplete="name" required
                 />
               </label>
 
               <label className="block space-y-2">
-                <span className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-text/55"><span className="text-accent">&gt;</span>Email</span>
+                <span className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-text/60">
+                  <span className="text-accent">&gt;</span>Email
+                </span>
                 <input
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange("email")}
-                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/50 focus:border-accent"
-                  placeholder="name@example.com"
+                  type="email" value={formState.email} onChange={handleChange("email")}
+                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/30 focus:border-accent"
+                  placeholder="name@example.com" autoComplete="email" required
                 />
               </label>
 
               <label className="block space-y-2">
-                <span className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-text/55"><span className="text-accent">&gt;</span>Message</span>
+                <span className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-text/60">
+                  <span className="text-accent">&gt;</span>Message
+                </span>
                 <textarea
-                  value={formState.message}
-                  onChange={handleChange("message")}
+                  value={formState.message} onChange={handleChange("message")}
                   rows={6}
-                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/50 focus:border-accent"
-                  placeholder="Type your message..."
+                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/30 focus:border-accent"
+                  placeholder="Type your message..." required
                 />
               </label>
 
@@ -153,33 +141,37 @@ export default function Contact() {
                 <label>
                   Leave empty
                   <input
-                    type="text"
-                    name="website"
-                    tabIndex={-1}
-                    autoComplete="off"
-                    value={formState.website}
-                    onChange={handleChange("website")}
+                    type="text" name="website" tabIndex={-1} autoComplete="off"
+                    value={formState.website} onChange={handleChange("website")}
                   />
                 </label>
               </div>
 
               <div className="flex flex-wrap items-center gap-3">
                 <button
-                  type="submit"
-                  disabled={status === "loading"}
+                  type="submit" disabled={status === "loading"}
                   className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 font-mono text-sm text-text transition-colors hover:bg-[#356a5a] disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   {status === "loading" ? (
                     <>
-                      sending_<span className="inline-block h-4 w-2 animate-[blink_1s_steps(2,end)_infinite] bg-text" />
+                      sending_
+                      <span className="inline-block h-4 w-2 animate-blink bg-text" />
                     </>
                   ) : (
                     "send message ↵"
                   )}
                 </button>
 
-                <span className={`text-sm ${status === "success" ? "text-green-400" : status === "error" ? "text-red-400" : "text-text/55"}`}>
-                  {status === "success" ? "✓ message sent successfully" : message}
+                <span
+                  role="status"
+                  aria-live="polite"
+                  className={`text-sm ${
+                    status === "success" ? "text-green-400"
+                    : status === "error" ? "text-red-400"
+                    : "text-text/60"
+                  }`}
+                >
+                  {status === "success" ? "✓ message sent" : message}
                 </span>
               </div>
             </form>
@@ -193,12 +185,11 @@ export default function Contact() {
               <div className="mt-5 flex flex-wrap gap-3">
                 {contactLinks.map(({ label, href, icon: Icon }) => (
                   <a
-                    key={label}
-                    href={href}
+                    key={label} href={href}
                     target={label === "Email" ? undefined : "_blank"}
                     rel={label === "Email" ? undefined : "noreferrer"}
                     aria-label={label}
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-text/80 transition-all hover:translate-y-[-1px] hover:border-accent/50 hover:text-accent hover:shadow-[0_0_18px_rgba(45,93,79,0.25)]"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-text/80 transition-all hover:-translate-y-0.5 hover:border-accent/50 hover:text-accent hover:shadow-[0_0_18px_rgba(45,93,79,0.25)]"
                   >
                     <Icon size={18} />
                   </a>
@@ -215,15 +206,14 @@ export default function Contact() {
           transition={{ duration: reducedMotion ? 0 : 0.55 }}
         >
           <Card className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
-            <p className="text-sm font-medium tracking-[0.3em] text-text/50 uppercase">Availability</p>
-            <p className="mt-4 leading-7 text-text/75">
+            <p className="text-sm font-medium tracking-[0.3em] text-text/60 uppercase">Availability</p>
+            <p className="mt-4 leading-7 text-text/80">
               I am open to freelance work, internships, and collaborative builds where quality, honesty, and consistent progress matter.
             </p>
-
             <div className="mt-8 rounded-[1.5rem] border border-white/10 bg-black/25 p-5">
-              <p className="text-sm font-medium tracking-[0.24em] text-text/50 uppercase">Quick note</p>
+              <p className="text-sm font-medium tracking-[0.24em] text-text/60 uppercase">Quick note</p>
               <p className="mt-3 text-sm leading-7 text-text/70">
-                If the form does not reach the backend, email me directly and I will respond as soon as possible.
+                If the form fails, email me directly and I&apos;ll respond as soon as possible.
               </p>
             </div>
           </Card>
