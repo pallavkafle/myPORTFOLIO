@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 import SiteBackground from "@/components/ui/SiteBackground";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const serif = Instrument_Serif({ weight: "400", subsets: ["latin"], variable: "--font-serif", display: "swap" });
+const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
 
 const SITE_URL = "https://pallavkafle.com.np";
 
@@ -40,9 +42,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en">
-      <body className={inter.variable}>
-        <svg className="fixed inset-0 z-[9999] h-full w-full pointer-events-none opacity-[0.035]" aria-hidden="true">
+    <html lang="en" className={`${inter.variable} ${serif.variable} ${mono.variable}`}>
+      <body className="font-sans antialiased">
+        <svg className="pointer-events-none fixed inset-0 z-[1] h-full w-full opacity-[0.035]" aria-hidden="true">
           <filter id="grain">
             <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
             <feColorMatrix type="saturate" values="0" />

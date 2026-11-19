@@ -90,10 +90,10 @@ export default function Contact() {
       >
         <div className="mb-4 flex items-center gap-3">
           <div className="h-px w-8 bg-accent" />
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent">Contact</p>
+          <p className="font-mono text-xs font-medium uppercase tracking-[0.3em] text-accent">Contact</p>
           <div className="h-px flex-1 bg-white/5" />
         </div>
-        <h2 className="mb-4 text-4xl font-black leading-[1.05] tracking-tight md:text-6xl">
+        <h2 className="mb-4 text-4xl font-serif font-normal leading-[1.05] tracking-tight md:text-6xl">
           <span className="text-text">Let&apos;s </span>
           <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">connect.</span>
         </h2>

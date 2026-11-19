@@ -18,8 +18,10 @@ const config: Config = {
         gold: "#e8d48a",
         text: "#f5f1e8"
       },
-      fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"]
+            fontFamily: {
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        serif: ["var(--font-serif)", "Georgia", "serif"],
+        mono: ["var(--font-mono)", "monospace"],
       }
     }
   },

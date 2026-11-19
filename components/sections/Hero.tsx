@@ -56,7 +56,7 @@ export default function Hero() {
 
           <p className="mt-5 text-sm tracking-[0.24em] text-text/60 uppercase">Kathmandu, Nepal</p>
 
-          <h1 className="text-[clamp(2.8rem,9vw,6rem)] font-black leading-[0.9] tracking-tight text-text">
+          <h1 className="text-[clamp(2.8rem,9vw,6rem)] font-serif font-normal leading-[0.9] tracking-tight text-text">
             Pallav Kafle
           </h1>
 
