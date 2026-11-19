@@ -6,6 +6,7 @@ import {  Mail, Phone } from "lucide-react";
 import { FormEvent, useState } from "react";
 import Card from "@/components/ui/Card";
 import { SiGithub } from "react-icons/si";
+import { siteConfig } from "@/lib/data/site";
 
 type FormState = {
   name: string;
@@ -22,11 +23,11 @@ const initialState: FormState = {
 };
 
 const contactLinks = [
-  { label: "FaGithub", href: "https://github.com/pallavkafle", icon: FaGithub },
-  { label: "FaLinkedIn", href: "https://www.linkedin.com/in/pallav-kafle-97701727b/", icon: FaLinkedin },
-  { label: "FaInstagram", href: "https://www.instagram.com/pallav_kafle", icon: FaInstagram },
-  { label: "Email", href: "mailto:kaflepallav39@gmail.com", icon: Mail },
-];
+  { label: "GitHub", href: siteConfig.socials.github, icon: FaGithub },
+  { label: "LinkedIn", href: siteConfig.socials.linkedin, icon: FaLinkedin },
+  { label: "Instagram", href: siteConfig.socials.instagram, icon: FaInstagram },
+  { label: "Email", href: `mailto:${siteConfig.email}`, icon: Mail },
+];;
 
 export default function Contact() {
   const [formState, setFormState] = useState<FormState>(initialState);
@@ -74,7 +75,7 @@ export default function Contact() {
       setFormState(initialState);
     } catch {
       setStatus("error");
-      setMessage("Failed to send. Email: kaflepallav39@gmail.com");
+      setMessage(`Failed to send. Email: ${siteConfig.email}`);
     }
   };
 
@@ -185,8 +186,8 @@ export default function Contact() {
 
             <div className="mt-6 border-t border-white/10 pt-5 font-mono text-sm text-text/80">
               <div className="space-y-2">
-                <p><Mail size={16} className="inline mr-2" /> <a className="text-[#e8d48a]" href="mailto:kaflepallav39@gmail.com">kaflepallav39@gmail.com</a></p>
-                <p><Phone size={16} className="inline mr-2" /> <a className="text-[#e8d48a]" href="tel:+9779840795507">9840795507</a></p>
+                <p><Mail size={16} className="inline mr-2" /> <a className="text-gold" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
+                <p><Phone size={16} className="inline mr-2" /> <a className="text-gold" href={`tel:+977${siteConfig.phone}`}>{siteConfig.phone}</a></p>
               </div>
 
               <div className="mt-5 flex flex-wrap gap-3">

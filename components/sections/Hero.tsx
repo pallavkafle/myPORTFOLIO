@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChevronDown, Mail,Phone } from "lucide-react";
+import { siteConfig } from "@/lib/data/site";
 
 const roles = [
   "Computer Engineering Student",
@@ -13,12 +14,11 @@ const roles = [
 ];
 
 const socialLinks = [
-  { icon: FaGithub, href: "https://github.com/pallavkafle", label: "GitHub" },
-  { icon: FaLinkedin, href: "https://www.linkedin.com/in/pallav-kafle-97701727b/", label: "LinkedIn" },
-  { icon: FaInstagram, href: "https://www.instagram.com/pallav_kafle", label: "Instagram" },
-  { icon: Mail, href: "mailto:kaflepallav39@gmail.com", label: "Email" }
+  { icon: FaGithub, href: siteConfig.socials.github, label: "GitHub" },
+  { icon: FaLinkedin, href: siteConfig.socials.linkedin, label: "LinkedIn" },
+  { icon: FaInstagram, href: siteConfig.socials.instagram, label: "Instagram" },
+  { icon: Mail, href: `mailto:${siteConfig.email}`, label: "Email" },
 ];
-
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
 

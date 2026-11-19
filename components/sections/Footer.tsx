@@ -5,13 +5,13 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Mail, ArrowUp } from "lucide-react";
 import { useEffect, useState } from "react";
 import Card from "@/components/ui/Card";
-import { SiGithub } from "react-icons/si";
+import { siteConfig } from "@/lib/data/site";
 
 const socials = [
-  { label: "FaGithub", href: "https://github.com/pallavkafle", icon: FaGithub },
-  { label: "FaLinkedIn", href: "https://www.linkedin.com/in/pallav-kafle-97701727b/", icon: FaLinkedin },
-  { label: "FaInstagram", href: "https://www.instagram.com/pallav_kafle", icon: FaInstagram },
-  { label: "Email", href: "mailto:kaflepallav39@gmail.com", icon: Mail }
+  { label: "GitHub", href: siteConfig.socials.github, icon: FaGithub },
+  { label: "LinkedIn", href: siteConfig.socials.linkedin, icon: FaLinkedin },
+  { label: "Instagram", href: siteConfig.socials.instagram, icon: FaInstagram },
+  { label: "Email", href: `mailto:${siteConfig.email}`, icon: Mail },
 ];
 
 export default function Footer() {
@@ -63,7 +63,7 @@ export default function Footer() {
           </div>
 
           <div className="mt-5 flex items-center justify-between border-t border-white/10 pt-4 text-xs text-white/50">
-            <p>© 2025 Pallav Kafle</p>
+            <p>© {new Date().getFullYear()} {siteConfig.name}</p>
             <p>Built with Next.js + Tailwind</p>
           </div>
         </Card>

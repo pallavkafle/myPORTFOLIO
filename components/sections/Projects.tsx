@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ExternalLink, X } from "lucide-react";
 import { useState } from "react";
 import Card from "@/components/ui/Card";
+import { siteConfig } from "@/lib/data/site";
 
 type Project = {
   title: string;
@@ -35,8 +36,7 @@ const projects: Project[] = [
       "Responsive dashboard"
     ],
     status: "Built — currently undeployed (free hosting inactive)",
-    future: "AI spending insights, budgeting, receipt scanning",
-    github: "https://github.com/pallavkafle"
+    future: "AI spending insights, budgeting, receipt scanning"
   },
   {
     title: "ShapeLogic",
