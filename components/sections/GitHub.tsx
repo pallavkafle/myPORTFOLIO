@@ -155,7 +155,7 @@ export default function GitHub() {
                 </div>
                 <div className="mt-5 grid gap-4 md:grid-cols-2">
                   {repos.map((repo) => (
-                    <a key={repo.id} href={repo.html_url} target="_blank" rel="noreferrer" className="rounded-2xl border border-white/10 bg-black/25 p-4 transition-colors hover:border-[#2d5d4f]/45">
+                    <a key={repo.id} href={repo.html_url} target="_blank" rel="noreferrer" className="rounded-2xl border border-white/10 bg-black/25 p-4 transition-colors hover:border-accent/45">
                       <h4 className="font-semibold text-text">{repo.name}</h4>
                       <p className="mt-2 line-clamp-3 text-sm leading-6 text-text/70">{repo.description ?? "No description provided."}</p>
                       <div className="mt-4 flex items-center justify-between text-xs text-text/55">

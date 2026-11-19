@@ -56,7 +56,7 @@ export default function Hero() {
 
           <p className="mt-5 text-sm tracking-[0.24em] text-text/60 uppercase">Kathmandu, Nepal</p>
 
-          <h1 className="text-[clamp(2.8rem,9vw,6rem)] font-black leading-[0.9] tracking-tight text-[#f5f1e8]">
+          <h1 className="text-[clamp(2.8rem,9vw,6rem)] font-black leading-[0.9] tracking-tight text-text">
             Pallav Kafle
           </h1>
 
@@ -84,13 +84,13 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap lg:justify-start"
           >
-            <a href="#projects" className="rounded-full bg-[#2d5d4f] px-6 py-3 text-sm font-semibold text-[#f5f1e8] transition-transform hover:-translate-y-0.5 hover:bg-[#356a5a]">
+            <a href="#projects" className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-text transition-transform hover:-translate-y-0.5 hover:bg-[#356a5a]">
               View Projects
             </a>
             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-text/90 backdrop-blur-md transition-colors hover:bg-white/10">
               Download Resume
             </a>
-            <a href="#contact" className="rounded-full px-2 py-3 text-sm font-semibold text-text/85 transition-colors hover:text-[#e8d48a]">
+            <a href="#contact" className="rounded-full px-2 py-3 text-sm font-semibold text-text/85 transition-colors hover:text-gold">
               Contact Me
             </a>
           </motion.div>
@@ -108,7 +108,7 @@ export default function Hero() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-text/85 shadow-[0_0_0_rgba(0,0,0,0)] transition-all hover:-translate-y-0.5 hover:border-[#2d5d4f]/60 hover:text-[#e8d48a] hover:shadow-[0_0_18px_rgba(45,93,79,0.3)]"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-text/85 shadow-[0_0_0_rgba(0,0,0,0)] transition-all hover:-translate-y-0.5 hover:border-accent/60 hover:text-gold hover:shadow-[0_0_18px_rgba(45,93,79,0.3)]"
                 >
                   <Icon size={18} />
                 </a>
@@ -128,11 +128,11 @@ export default function Hero() {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             className="relative"
           >
-            <div className="absolute inset-0 -z-10 mx-auto h-[22rem] w-[22rem] rounded-full bg-[#2d5d4f]/20 blur-3xl" />
+            <div className="absolute inset-0 -z-10 mx-auto h-[22rem] w-[22rem] rounded-full bg-accent/20 blur-3xl" />
 
             <div className="relative h-[220px] w-[220px] md:h-[320px] md:w-[320px]">
-              <div className="absolute inset-0 rounded-full bg-[#2d5d4f]/25 blur-2xl" />
-              <div className="relative h-full w-full overflow-hidden rounded-full border-2 border-[#2d5d4f] shadow-[0_0_60px_rgba(45,93,79,0.5)] after:pointer-events-none after:absolute after:inset-0 after:rounded-full after:bg-gradient-to-t after:from-[#0a0f0d] after:via-transparent after:to-transparent after:content-['']">
+              <div className="absolute inset-0 rounded-full bg-accent/25 blur-2xl" />
+              <div className="relative h-full w-full overflow-hidden rounded-full border-2 border-accent shadow-[0_0_60px_rgba(45,93,79,0.5)] after:pointer-events-none after:absolute after:inset-0 after:rounded-full after:bg-gradient-to-t after:from-[#0a0f0d] after:via-transparent after:to-transparent after:content-['']">
                 <Image
                   src="/images/profile.jpg"
                   alt="Pallav Kafle"

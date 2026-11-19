@@ -76,7 +76,7 @@ export default function Navbar() {
             {/* ── Logo ── */}
             <Link
               href="/"
-              className="flex-shrink-0 text-lg font-semibold tracking-tight text-[#f5f1e8] hover:text-emerald-400 transition-colors duration-200 group flex items-center gap-1"
+              className="flex-shrink-0 text-lg font-semibold tracking-tight text-text hover:text-emerald-400 transition-colors duration-200 group flex items-center gap-1"
             >
               <span className="relative">
                 Pallav Kafle

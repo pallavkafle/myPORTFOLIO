@@ -16,19 +16,19 @@ export default function Education() {
         className="mb-12 max-w-2xl"
       >
         <div className="mb-4 flex items-center gap-3">
-          <div className="h-px w-8 bg-[#2d5d4f]" />
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#2d5d4f]">Education</p>
+          <div className="h-px w-8 bg-accent" />
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent">Education</p>
           <div className="h-px flex-1 bg-white/5" />
         </div>
         <h2 className="mb-4 text-4xl font-black leading-[1.05] tracking-tight md:text-6xl">
-          <span className="text-[#f5f1e8]">Where I&apos;m </span>
+          <span className="text-text">Where I&apos;m </span>
           <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">learning.</span>
         </h2>
         <p className="mb-12 max-w-xl text-sm text-white/60 md:text-base">Knowledge compounds. So does effort.</p>
       </motion.div>
 
       <div className="relative pl-8">
-        <div className="absolute left-3 top-2 h-full w-px bg-gradient-to-b from-[#2d5d4f]/80 via-white/10 to-transparent" />
+        <div className="absolute left-3 top-2 h-full w-px bg-gradient-to-b from-accent/80 via-white/10 to-transparent" />
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -37,7 +37,7 @@ export default function Education() {
           transition={{ duration: 0.5 }}
         >
           <Card className="relative rounded-[1.75rem] border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
-            <span className="absolute -left-[1.05rem] top-7 h-4 w-4 rounded-full border border-[#2d5d4f]/60 bg-[#2d5d4f] shadow-[0_0_18px_rgba(45,93,79,0.35)]" />
+            <span className="absolute -left-[1.05rem] top-7 h-4 w-4 rounded-full border border-accent/60 bg-accent shadow-[0_0_18px_rgba(45,93,79,0.35)]" />
 
             <p className="text-sm font-medium tracking-[0.3em] text-text/50 uppercase">Himalaya College of Engineering</p>
             <h3 className="mt-3 text-2xl font-semibold text-text">Tribhuvan University</h3>

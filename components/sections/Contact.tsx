@@ -89,12 +89,12 @@ export default function Contact() {
         className="mb-12 max-w-2xl"
       >
         <div className="mb-4 flex items-center gap-3">
-          <div className="h-px w-8 bg-[#2d5d4f]" />
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#2d5d4f]">Contact</p>
+          <div className="h-px w-8 bg-accent" />
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent">Contact</p>
           <div className="h-px flex-1 bg-white/5" />
         </div>
         <h2 className="mb-4 text-4xl font-black leading-[1.05] tracking-tight md:text-6xl">
-          <span className="text-[#f5f1e8]">Let&apos;s </span>
+          <span className="text-text">Let&apos;s </span>
           <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">connect.</span>
         </h2>
         <p className="mb-12 max-w-xl text-sm text-white/60 md:text-base">A message is the start of something.</p>
@@ -117,34 +117,34 @@ export default function Contact() {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <label className="block space-y-2">
-                <span className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-text/55"><span className="text-[#2d5d4f]">&gt;</span>Name</span>
+                <span className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-text/55"><span className="text-accent">&gt;</span>Name</span>
                 <input
                   type="text"
                   value={formState.name}
                   onChange={handleChange("name")}
-                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/50 focus:border-[#2d5d4f]"
+                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/50 focus:border-accent"
                   placeholder="Your name"
                 />
               </label>
 
               <label className="block space-y-2">
-                <span className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-text/55"><span className="text-[#2d5d4f]">&gt;</span>Email</span>
+                <span className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-text/55"><span className="text-accent">&gt;</span>Email</span>
                 <input
                   type="email"
                   value={formState.email}
                   onChange={handleChange("email")}
-                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/50 focus:border-[#2d5d4f]"
+                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/50 focus:border-accent"
                   placeholder="name@example.com"
                 />
               </label>
 
               <label className="block space-y-2">
-                <span className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-text/55"><span className="text-[#2d5d4f]">&gt;</span>Message</span>
+                <span className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-text/55"><span className="text-accent">&gt;</span>Message</span>
                 <textarea
                   value={formState.message}
                   onChange={handleChange("message")}
                   rows={6}
-                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/50 focus:border-[#2d5d4f]"
+                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/50 focus:border-accent"
                   placeholder="Type your message..."
                 />
               </label>
@@ -167,11 +167,11 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="inline-flex items-center gap-2 rounded-full bg-[#2d5d4f] px-5 py-2.5 font-mono text-sm text-[#f5f1e8] transition-colors hover:bg-[#356a5a] disabled:cursor-not-allowed disabled:opacity-70"
+                  className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 font-mono text-sm text-text transition-colors hover:bg-[#356a5a] disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   {status === "loading" ? (
                     <>
-                      sending_<span className="inline-block h-4 w-2 animate-[blink_1s_steps(2,end)_infinite] bg-[#f5f1e8]" />
+                      sending_<span className="inline-block h-4 w-2 animate-[blink_1s_steps(2,end)_infinite] bg-text" />
                     </>
                   ) : (
                     "send message ↵"
@@ -198,7 +198,7 @@ export default function Contact() {
                     target={label === "Email" ? undefined : "_blank"}
                     rel={label === "Email" ? undefined : "noreferrer"}
                     aria-label={label}
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-text/80 transition-all hover:translate-y-[-1px] hover:border-[#2d5d4f]/50 hover:text-[#2d5d4f] hover:shadow-[0_0_18px_rgba(45,93,79,0.25)]"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-text/80 transition-all hover:translate-y-[-1px] hover:border-accent/50 hover:text-accent hover:shadow-[0_0_18px_rgba(45,93,79,0.25)]"
                   >
                     <Icon size={18} />
                   </a>

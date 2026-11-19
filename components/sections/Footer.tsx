@@ -50,7 +50,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-text/80 transition-colors hover:text-[#2d5d4f]"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-text/80 transition-colors hover:text-accent"
                 >
                   <Icon size={18} />
                 </a>
@@ -74,7 +74,7 @@ export default function Footer() {
           type="button"
           onClick={scrollToTop}
           aria-label="Back to top"
-          className="fixed bottom-6 right-6 z-50 rounded-full border border-[#2d5d4f]/30 bg-[#2d5d4f]/20 p-2 text-[#f5f1e8] transition-colors hover:bg-[#2d5d4f]/40"
+          className="fixed bottom-6 right-6 z-50 rounded-full border border-accent/30 bg-accent/20 p-2 text-text transition-colors hover:bg-accent/40"
         >
           <ArrowUp size={18} />
         </button>
