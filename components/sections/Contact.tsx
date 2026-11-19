@@ -94,7 +94,7 @@ export default function Contact() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: reducedMotion ? 0 : 0.55 }}
         >
-          <Card className="rounded-2xl border border-white/10 bg-black/40 p-5 font-mono text-sm text-text/80 shadow-[0_0_30px_rgba(0,0,0,0.35)] backdrop-blur-xl">
+          <Card className="rounded-2xl border border-white/10 bg-black/40 p-5 font-mono text-sm text-text/80 shadow-[0_0_30px_rgba(0,0,0,0.35)] backdrop-blur-sm">
             <div className="mb-5 flex items-center gap-2 border-b border-white/10 pb-4 text-text/60">
               <span className="h-3 w-3 rounded-full bg-red-400/80" />
               <span className="h-3 w-3 rounded-full bg-yellow-400/80" />
@@ -205,7 +205,7 @@ export default function Contact() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: reducedMotion ? 0 : 0.55 }}
         >
-          <Card className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
+          <Card className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
             <p className="text-sm font-medium tracking-[0.3em] text-text/60 uppercase">Availability</p>
             <p className="mt-4 leading-7 text-text/80">
               I am open to freelance work, internships, and collaborative builds where quality, honesty, and consistent progress matter.

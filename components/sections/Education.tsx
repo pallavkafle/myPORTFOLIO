@@ -36,7 +36,7 @@ export default function Education() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5 }}
         >
-          <Card className="relative rounded-[1.75rem] border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
+          <Card className="relative rounded-[1.75rem] border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
             <span className="absolute -left-[1.05rem] top-7 h-4 w-4 rounded-full border border-accent/60 bg-accent shadow-[0_0_18px_rgba(45,93,79,0.35)]" />
 
             <p className="text-sm font-medium tracking-[0.3em] text-text/50 uppercase">Himalaya College of Engineering</p>
@@ -58,7 +58,7 @@ export default function Education() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.45, delay: 0.05 }}
         >
-          <Card className="mt-5 rounded-[1.75rem] border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
+          <Card className="mt-5 rounded-[1.75rem] border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
             <p className="text-sm font-medium tracking-[0.3em] text-text/50 uppercase">Current Learning Focus</p>
             <div className="mt-4 flex flex-wrap gap-3">
               {tags.map((tag) => (

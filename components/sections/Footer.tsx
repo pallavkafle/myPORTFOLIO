@@ -39,7 +39,7 @@ export default function Footer() {
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: reducedMotion ? 0 : 0.45 }}
       >
-        <Card className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
+        <Card className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
           <div className="flex items-center justify-between gap-4">
             <p className="text-lg font-semibold text-text">Pallav Kafle</p>
             <div className="flex flex-wrap items-center gap-3">

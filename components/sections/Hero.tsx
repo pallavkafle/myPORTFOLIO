@@ -87,7 +87,7 @@ export default function Hero() {
             <a href="#projects" className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-text transition-transform hover:-translate-y-0.5 hover:bg-[#356a5a]">
               View Projects
             </a>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-text/90 backdrop-blur-md transition-colors hover:bg-white/10">
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-text/90 backdrop-blur-sm transition-colors hover:bg-white/10">
               Download Resume
             </a>
             <a href="#contact" className="rounded-full px-2 py-3 text-sm font-semibold text-text/85 transition-colors hover:text-gold">
@@ -147,7 +147,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
-                className="absolute -right-3 top-4 hidden rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-text/90 shadow-[0_0_24px_rgba(0,0,0,0.2)] backdrop-blur-xl md:block"
+                className="absolute -right-3 top-4 hidden rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-text/90 shadow-[0_0_24px_rgba(0,0,0,0.2)] backdrop-blur-sm md:block"
               >
                 <p className="text-xs uppercase tracking-[0.24em] text-text/55">Degree</p>
                 <p className="mt-1 font-semibold">B.E. Computer</p>
@@ -157,7 +157,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.95 }}
-                className="absolute -left-4 bottom-6 hidden rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-text/90 shadow-[0_0_24px_rgba(0,0,0,0.2)] backdrop-blur-xl md:block"
+                className="absolute -left-4 bottom-6 hidden rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-text/90 shadow-[0_0_24px_rgba(0,0,0,0.2)] backdrop-blur-sm md:block"
               >
                 <p className="text-xs uppercase tracking-[0.24em] text-text/55">Focus</p>
                 <p className="mt-1 font-semibold">MERN Stack</p>
@@ -167,7 +167,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 1.1 }}
-                className="absolute -bottom-2 right-4 hidden rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-text/90 shadow-[0_0_24px_rgba(0,0,0,0.2)] backdrop-blur-xl md:block"
+                className="absolute -bottom-2 right-4 hidden rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-text/90 shadow-[0_0_24px_rgba(0,0,0,0.2)] backdrop-blur-sm md:block"
               >
                 <p className="text-xs uppercase tracking-[0.24em] text-text/55">Interest</p>
                 <p className="mt-1 font-semibold">AI Enthusiast</p>

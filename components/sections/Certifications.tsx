@@ -36,7 +36,7 @@ export default function Certifications() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.45, delay: index * 0.05 }}
           >
-            <Card className={`relative overflow-hidden rounded-2xl border bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_34px_rgba(45,93,79,0.14)] ${
+            <Card className={`relative overflow-hidden rounded-2xl border bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_34px_rgba(45,93,79,0.14)] ${
               cert.completed ? "border-accent/40 shadow-[0_0_24px_rgba(45,93,79,0.12)]" : "border-white/10"
             }`}>
               <div className={`absolute left-0 top-0 h-[3px] w-full ${cert.completed ? "bg-accent" : "bg-gold"}`} />

@@ -96,9 +96,9 @@ export default function GitHub() {
       </motion.div>
 
       {loading ? (
-        <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-8 text-text/70 backdrop-blur-xl">Loading GitHub profile…</Card>
+        <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-8 text-text/70 backdrop-blur-sm">Loading GitHub profile…</Card>
       ) : error ? (
-        <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-8 text-text/70 backdrop-blur-xl">{error}</Card>
+        <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-8 text-text/70 backdrop-blur-sm">{error}</Card>
       ) : user ? (
         <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <motion.div
@@ -107,7 +107,7 @@ export default function GitHub() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+            <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
               <div className="flex items-center gap-4">
                 <Image src={user.avatar_url} alt={`${user.login} avatar`} width={80} height={80} className="h-20 w-20 rounded-full border border-white/10 object-cover" />
                 <div>
@@ -149,7 +149,7 @@ export default function GitHub() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5 }}
             >
-              <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+              <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
                 <div className="flex items-center gap-2 text-sm font-medium tracking-[0.22em] text-text/55 uppercase">
                   <GitBranch size={16} /> Recent Repos
                 </div>
@@ -174,7 +174,7 @@ export default function GitHub() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: 0.05 }}
             >
-              <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+              <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
                 <div className="flex items-center gap-2 text-sm font-medium tracking-[0.22em] text-text/55 uppercase">
                   <BookOpen size={16} /> Top Languages
                 </div>

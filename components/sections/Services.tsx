@@ -78,7 +78,7 @@ export default function Services() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.45, delay: index * 0.04 }}
           >
-            <Card className="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition-all duration-300 hover:border-accent/50 hover:bg-white/[0.08] hover:shadow-[0_0_32px_rgba(45,93,79,0.14)] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">
+            <Card className="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition-all duration-300 hover:border-accent/50 hover:bg-white/[0.08] hover:shadow-[0_0_32px_rgba(45,93,79,0.14)] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-accent/30 bg-accent/15 text-gold transition-colors group-hover:bg-accent/20">
                 <service.Icon size={20} className="h-5 w-5" />
               </div>

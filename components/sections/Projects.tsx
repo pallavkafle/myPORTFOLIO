@@ -52,7 +52,7 @@ export default function Projects() {
                     setSelectedProject(project);
                   }
                 }}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 text-left backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] hover:border-accent/50"
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 text-left backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] hover:border-accent/50"
               >
                 <div className="absolute left-0 top-0 h-[3px] w-full bg-gradient-to-r from-accent to-emerald-500" />
                 <div className="flex items-start justify-between gap-4">
@@ -93,7 +93,7 @@ export default function Projects() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 px-4 py-8 backdrop-blur-xl"
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 px-4 py-8 backdrop-blur-sm"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}

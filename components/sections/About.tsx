@@ -34,7 +34,7 @@ export default function About() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.55, delay: 0.1 }}
         >
-          <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-8 md:p-12 backdrop-blur-xl">
+          <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-8 md:p-12 backdrop-blur-sm">
             <div className="space-y-6 text-base leading-relaxed text-text/80 md:text-lg">
               <p>
                 I am a Computer Engineering student at Himalaya College of Engineering, Tribhuvan University, based in Kathmandu. My path into engineering wasn&apos;t just about learning syntax—it was driven by a genuine excitement to understand how complex systems work beneath the surface.
