@@ -3,6 +3,7 @@ import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 import SiteBackground from "@/components/ui/SiteBackground";
 import "./globals.css";
+import MotionProvider from "@/components/ui/MotionProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const serif = Instrument_Serif({ weight: "400", subsets: ["latin"], variable: "--font-serif", display: "swap" });
@@ -44,8 +45,10 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
   return (
     <html lang="en" className={`${inter.variable} ${serif.variable} ${mono.variable}`}>
       <body className="font-sans antialiased">
-        <SiteBackground />
-        {children}
+        <MotionProvider>
+         <SiteBackground />
+         {children}
+        </MotionProvider>
       </body>
     </html>
   );
