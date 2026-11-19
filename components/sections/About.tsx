@@ -1,61 +1,57 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { User, Zap, Target, Rocket, Lightbulb, BookOpen } from "lucide-react";
 import Card from "@/components/ui/Card";
-
-const cards = [
-  { Icon: User, title: "Who I Am", content: "Computer Engineering student, 7th sem, Himalaya College of Engineering, Tribhuvan University, Kathmandu" },
-  { Icon: Zap, title: "Why Engineering", content: "Genuine excitement about technology and how systems work" },
-  { Icon: Target, title: "What Drives Me", content: "Curiosity, continuous learning, building things that solve real problems" },
-  { Icon: Rocket, title: "Career Vision", content: "Full Stack → AI Engineer → independent product builder" },
-  { Icon: Lightbulb, title: "Personal Philosophy", content: "Technology is freedom" },
-  { Icon: BookOpen, title: "Learning Mindset", content: "Quality over quantity, detail-oriented, always exploring" }
-];
 
 export default function About() {
   return (
     <section id="about" className="relative py-24 px-6 md:px-16">
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.55 }}
-        className="mb-10 max-w-2xl"
-      >
-        <div className="mb-4 flex items-center gap-3">
-          <div className="h-px w-8 bg-[#2d5d4f]" />
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#2d5d4f]">About</p>
-          <div className="h-px flex-1 bg-white/5" />
-        </div>
-        <h2 className="mb-4 text-4xl font-black leading-[1.05] tracking-tight md:text-6xl">
-          <span className="text-[#f5f1e8]">A path into </span>
-          <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">engineering.</span>
-        </h2>
-        <p className="mb-12 max-w-xl text-sm text-white/40 md:text-base">Curious by nature. Disciplined by choice.</p>
-      </motion.div>
+      <div className="mx-auto max-w-6xl grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
+        
+        {/* Left side: Sticky heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.55 }}
+          className="lg:sticky lg:top-32 h-fit"
+        >
+          <div className="mb-4 flex items-center gap-3">
+            <div className="h-px w-8 bg-accent" />
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent">About</p>
+            <div className="h-px flex-1 bg-white/5 lg:hidden" />
+          </div>
+          <h2 className="mb-4 text-4xl font-black leading-[1.05] tracking-tight md:text-6xl">
+            <span className="text-text">A path into </span>
+            <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">engineering.</span>
+          </h2>
+          <p className="max-w-xs text-sm text-white/50 md:text-base">
+            Curious by nature. Disciplined by choice.
+          </p>
+        </motion.div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {cards.map((card, index) => {
-          const Icon = card.Icon;
-          return (
-            <motion.div
-              key={card.title}
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45, delay: index * 0.05 }}
-            >
-              <Card className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition-all duration-300 hover:border-[#2d5d4f]/50 hover:bg-white/[0.08] hover:shadow-[0_0_35px_rgba(45,93,79,0.16)] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#2d5d4f] after:transition-all after:duration-300 hover:after:w-full">
-                <h3 className="mb-3 flex items-center gap-3 text-sm font-semibold uppercase tracking-widest text-[#e8d48a]">
-                  <Icon className="h-5 w-5 text-[#2d5d4f] group-hover:text-emerald-400 transition-colors duration-300" /> 
-                  {card.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-[#f5f1e8]/70">{card.content}</p>
-              </Card>
-            </motion.div>
-          );
-        })}
+        {/* Right side: The narrative */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.55, delay: 0.1 }}
+        >
+          <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-8 md:p-12 backdrop-blur-xl">
+            <div className="space-y-6 text-base leading-relaxed text-text/80 md:text-lg">
+              <p>
+                I am a Computer Engineering student at Himalaya College of Engineering, Tribhuvan University, based in Kathmandu. My path into engineering wasn&apos;t just about learning syntax—it was driven by a genuine excitement to understand how complex systems work beneath the surface.
+              </p>
+              <p>
+                Today, I specialize in the <span className="text-emerald-400 font-medium">MERN stack</span> and build full-stack web applications. I care deeply about writing clean code and creating seamless user experiences. Whether it&apos;s building a secure expense tracker or exploring AI integrations, my focus is always on solving real problems with practical, production-ready solutions.
+              </p>
+              <p>
+                I believe technology is freedom. My goal is to continually evolve—moving from Full Stack development into <span className="text-gold font-medium">AI Engineering</span>, and eventually building independent products that make a meaningful impact. I am detail-oriented, always exploring, and I prefer quality over quantity in everything I build.
+              </p>
+            </div>
+          </Card>
+        </motion.div>
+
       </div>
     </section>
   );
