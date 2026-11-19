@@ -44,7 +44,7 @@ export default function Education() {
             <p className="mt-2 text-lg text-text/80">B.E. Computer Engineering</p>
 
             <div className="mt-5 flex flex-wrap gap-3 text-sm text-text/70">
-              <span className="rounded-full border border-white/10 bg-black/25 px-4 py-2">7th Semester</span>
+              <span className="rounded-full border border-white/10 bg-black/25 px-4 py-2">Currently Enrolled</span>
               <span className="rounded-full border border-white/10 bg-black/25 px-4 py-2">Expected Graduation: 2084 B.S.</span>
             </div>
 

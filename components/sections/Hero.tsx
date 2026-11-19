@@ -115,19 +115,6 @@ export default function Hero() {
               ))}
             </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2, duration: 1 }}
-              className="mt-10 max-w-lg border-t border-white/10 pt-6"
-            >
-              <p className="text-sm leading-relaxed font-light italic text-white/50">
-                &ldquo;The people who are crazy enough to think they can change the world are the ones who do.&rdquo;
-              </p>
-              <p className="mt-1 text-xs tracking-widest text-white/50 uppercase">
-                — Steve Jobs
-              </p>
-            </motion.div>
           </motion.div>
         </motion.div>
 
@@ -162,8 +149,8 @@ export default function Hero() {
                 transition={{ duration: 0.5, delay: 0.8 }}
                 className="absolute -right-3 top-4 hidden rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-text/90 shadow-[0_0_24px_rgba(0,0,0,0.2)] backdrop-blur-xl md:block"
               >
-                <p className="text-xs uppercase tracking-[0.24em] text-text/55">Status</p>
-                <p className="mt-1 font-semibold">7th Semester</p>
+                <p className="text-xs uppercase tracking-[0.24em] text-text/55">Degree</p>
+                <p className="mt-1 font-semibold">B.E. Computer</p>
               </motion.div>
 
               <motion.div

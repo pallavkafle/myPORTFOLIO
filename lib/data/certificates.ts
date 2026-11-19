@@ -17,7 +17,7 @@ export const certificates: Certificate[] = [
   {
     provider: "Broadway Infosys",
     title: "Generative AI & Large Language Models",
-    meta: "Currently Pursuing | Expected: Soon",
+    meta: "Currently Pursuing",
     verify: null,
     completed: false
   },
