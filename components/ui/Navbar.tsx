@@ -1,165 +1,164 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import { Menu, X } from "lucide-react";
+
+const navLinks = [
+  { name: "Projects", href: "#projects" },
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
+  { name: "Contact", href: "#contact" },
+];
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isHidden, setIsHidden] = useState(false);
 
-  // ── Scroll detection ──
+  const { scrollY } = useScroll();
+
+  // Hide navbar on scroll down, show on scroll up
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    if (latest > previous && latest > 150) {
+      setIsHidden(true);
+    } else {
+      setIsHidden(false);
+    }
+  });
+
+  // Track active section using IntersectionObserver
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setIsScrolled(scrollY > 20);
-      setScrollProgress((scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-
-      // Detect active section (for highlight)
-      const sections = ['home', 'about', 'skills', 'projects', 'education', 'certifications', 'services', 'contact'];
-      for (const id of sections) {
-        const el = document.getElementById(id);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(id);
-            break;
+    const sections = navLinks.map((link) => link.href.substring(1));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
           }
-        }
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+        });
+      },
+      { rootMargin: "-20% 0px -80% 0px" }
+    );
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
-  // ── Navigation links ──
-  const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Education', href: '#education' },
-    { name: 'Certifications', href: '#certifications' },
-    { name: 'Services', href: '#services' },
-    { name: 'Contact', href: '#contact' },
-  ];
+  // Close mobile menu on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsMobileMenuOpen(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   return (
     <>
-      {/* ── Scroll Progress Bar ── */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 z-[60] h-[3px] bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400"
-        style={{ width: `${scrollProgress}%`, opacity: isScrolled ? 1 : 0 }}
-        transition={{ duration: 0.1 }}
-      />
-
       <motion.header
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          isScrolled ? 'shadow-[0_8px_32px_rgba(0,0,0,0.5)]' : 'shadow-none'
-        }`}
-        style={{
-          background: isScrolled
-            ? 'rgba(13, 12, 16, 0.88)'
-            : 'rgba(13, 12, 16, 0.55)',
-          backdropFilter: 'blur(16px)',
-          borderBottom: `1px solid ${isScrolled ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.04)'}`,
-        }}
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: isHidden ? -100 : 0, opacity: isHidden ? 0 : 1 }}
+        transition={{ duration: 0.35, ease: "easeInOut" }}
+        className="fixed top-4 left-1/2 z-50 -translate-x-1/2 w-[90%] max-w-3xl"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+        <nav className="flex items-center justify-between rounded-full border border-white/10 bg-[#0a0f0d]/80 px-4 py-2 shadow-lg backdrop-blur-md">
+          {/* Logo */}
+          <Link
+            href="/"
+            className="text-sm font-semibold tracking-tight text-text transition-colors hover:text-emerald-400"
+          >
+            Pallav Kafle
+          </Link>
 
-            {/* ── Logo ── */}
-            <Link
-              href="/"
-              className="flex-shrink-0 text-lg font-semibold tracking-tight text-text hover:text-emerald-400 transition-colors duration-200 group flex items-center gap-1"
-            >
-              <span className="relative">
-                Pallav Kafle
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-emerald-400 transition-all duration-300 group-hover:w-full" />
-              </span>
-            </Link>
-
-            {/* ── Desktop Navigation ── */}
-            <nav className="hidden lg:flex items-center gap-0.5">
-              {navLinks.map((link) => {
-                const isActive = activeSection === link.href.replace('#', '');
-                return (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-white/5 ${
-                      isActive ? 'text-white' : 'text-[#b0aab5] hover:text-white'
-                    }`}
-                  >
-                    {link.name}
-                    {/* Active indicator */}
+          {/* Desktop Links */}
+          <div className="hidden items-center gap-1 md:flex">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.substring(1);
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`relative rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
+                    isActive ? "text-white" : "text-white/60 hover:text-white"
+                  }`}
+                >
+                  {isActive && (
                     <motion.span
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full"
-                      initial={{ width: 0 }}
-                      animate={{ width: isActive ? '70%' : 0 }}
-                      transition={{ duration: 0.3 }}
+                      layoutId="active-pill"
+                      className="absolute inset-0 z-[-1] rounded-full bg-white/10"
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     />
-                  </Link>
-                );
-              })}
-              <Link
-                href="/resume.pdf" target="_blank" rel="noreferrer"
-                className="ml-2 px-4 py-2 text-sm font-medium text-emerald-400 border border-emerald-400/30 rounded-full hover:bg-emerald-400/10 hover:border-emerald-400/60 hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(52,211,153,0.1)] hover:shadow-[0_0_30px_rgba(52,211,153,0.2)]"
-              >
-                Resume
-              </Link>
-            </nav>
-
-            {/* ── Mobile Menu Button ── */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg text-[#b0aab5] hover:text-white hover:bg-white/5 transition-colors duration-200"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+                  )}
+                  {link.name}
+                </Link>
+              );
+            })}
           </div>
-        </div>
 
-        {/* ── Mobile Menu ── */}
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{
-            opacity: isMobileMenuOpen ? 1 : 0,
-            height: isMobileMenuOpen ? 'auto' : 0,
-          }}
-          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:hidden overflow-hidden bg-[#0d0c10]/95 backdrop-blur-lg border-t border-white/5"
-        >
-          <div className="px-4 py-6 space-y-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-3 py-2.5 text-base font-medium text-[#b0aab5] hover:text-white hover:bg-white/5 rounded-lg transition-colors duration-200"
-              >
-                {link.name}
-              </Link>
-            ))}
+          {/* Resume Button (Desktop) */}
+          <div className="hidden md:block">
             <Link
-              href="/resume.pdf" target="_blank" rel="noreferrer"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block px-3 py-2.5 text-base font-medium text-emerald-400 hover:bg-emerald-400/10 rounded-lg transition-colors duration-200"
+              href="/resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full bg-emerald-400/10 px-4 py-1.5 text-xs font-medium text-emerald-400 border border-emerald-400/30 transition-all hover:bg-emerald-400/20"
             >
               Resume
             </Link>
           </div>
-        </motion.div>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-1 text-white/70 hover:text-white md:hidden"
+            aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+          >
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </nav>
       </motion.header>
 
-      {/* ── Spacer ── */}
-      <div className="h-16" />
+      {/* Mobile Menu Overlay (Only rendered when open) */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 bg-[#0a0f0d]/95 backdrop-blur-lg md:hidden"
+          >
+            <div className="flex h-full flex-col items-center justify-center gap-6">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-2xl font-serif text-white/80 transition-colors hover:text-emerald-400"
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <Link
+                href="/resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="mt-4 rounded-full border border-emerald-400/30 px-6 py-2 text-lg text-emerald-400"
+              >
+                Resume
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
