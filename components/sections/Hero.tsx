@@ -1,10 +1,10 @@
 "use client";
 
-import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa6";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { ChevronDown, Mail,Phone } from "lucide-react";
+import { Mail } from "lucide-react";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa6";
 import { siteConfig } from "@/lib/data/site";
 
 const roles = [
@@ -19,6 +19,12 @@ const socialLinks = [
   { icon: FaInstagram, href: siteConfig.socials.instagram, label: "Instagram" },
   { icon: Mail, href: `mailto:${siteConfig.email}`, label: "Email" },
 ];
+
+const textReveal = {
+  hidden: { y: "100%" },
+  visible: { y: 0, transition: { duration: 0.8, ease: [0.33, 1, 0.68, 1] as const } },
+};
+
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
 
@@ -26,81 +32,95 @@ export default function Hero() {
     const interval = window.setInterval(() => {
       setRoleIndex((current) => (current + 1) % roles.length);
     }, 2500);
-
     return () => window.clearInterval(interval);
   }, []);
 
   return (
-    <section id="home" className="hero-section relative min-h-screen flex items-center">
-      <div className="absolute inset-0 -z-0 bg-[radial-gradient(circle_at_top,rgba(45,93,79,0.16),transparent_35%),linear-gradient(180deg,rgba(10,15,13,0.12),rgba(10,15,13,0.68))]" />
+    <section id="home" className="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
+      {/* Background radial gradient */}
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(45,93,79,0.15),transparent_40%)]" />
 
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: {},
-          visible: { transition: { staggerChildren: 0.15 } }
-        }}
-        className="relative z-10 mx-auto grid min-h-[calc(100vh-6rem)] w-full max-w-6xl items-center gap-10 px-5 py-10 lg:grid-cols-[1.2fr_0.8fr] lg:px-8"
-      >
+      <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-5 lg:grid-cols-[1.2fr_0.8fr] lg:px-8">
+        
+        {/* Left: Text Content */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-          className="order-2 max-w-3xl text-center lg:order-1 lg:text-left"
+          initial="hidden"
+          animate="visible"
+          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+          className="order-2 lg:order-1"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-sm font-medium text-[#b9dfd4] shadow-[0_0_22px_rgba(45,93,79,0.18)]">
-            <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_14px_rgba(74,222,128,0.9)]" />
-            Available for Freelance
+          {/* Availability Badge */}
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/5 px-3 py-1 text-xs font-medium text-emerald-300"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
+            </span>
+            Available for work
+          </motion.div>
+
+          {/* Line-Reveal Name */}
+          <div className="mt-6 mb-2 overflow-hidden">
+            <motion.h1
+              variants={textReveal}
+              className="text-[clamp(3.5rem,10vw,7.5rem)] font-serif font-normal leading-[0.9] tracking-tight text-text"
+            >
+              Pallav Kafle<span className="text-gold">.</span>
+            </motion.h1>
           </div>
 
-          <p className="mt-5 text-sm tracking-[0.24em] text-text/60 uppercase">Kathmandu, Nepal</p>
-
-          <h1 className="text-[clamp(2.8rem,9vw,6rem)] font-serif font-normal leading-[0.9] tracking-tight text-text">
-            Pallav Kafle
-          </h1>
-
-          <div className="mt-6 min-h-[3.5rem]">
+          {/* Typing Role */}
+          <div className="mb-6 h-8 overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.p
                 key={roleIndex}
-                initial={{ opacity: 0, y: 14 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -14 }}
-                transition={{ duration: 0.35 }}
-                className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text font-mono text-xl font-semibold text-transparent md:text-2xl"
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3 }}
+                className="font-mono text-sm tracking-wide text-emerald-400 md:text-base"
               >
                 {roles[roleIndex]}
               </motion.p>
             </AnimatePresence>
           </div>
 
-          <p className="mt-5 max-w-2xl text-base leading-7 text-text/80 md:text-lg">
-            Building modern web applications and exploring intelligent systems.
-          </p>
-
-          <motion.div
-            variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-            transition={{ duration: 0.6 }}
-            className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap lg:justify-start"
+          <motion.p
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            className="mb-8 max-w-md text-sm leading-relaxed text-white/60 md:text-base"
           >
-            <a href="#projects" className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-text transition-transform hover:-translate-y-0.5 hover:bg-[#356a5a]">
+            Based in Kathmandu. I build full-stack applications with the MERN stack and explore the frontiers of AI.
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            className="flex flex-wrap items-center gap-4"
+          >
+            <a
+              href="#projects"
+              className="rounded-full bg-text px-6 py-3 text-sm font-semibold text-background transition-transform hover:scale-105 active:scale-95"
+            >
               View Projects
             </a>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-text/90 backdrop-blur-sm transition-colors hover:bg-white/10">
-              Download Resume
-            </a>
-            <a href="#contact" className="rounded-full px-2 py-3 text-sm font-semibold text-text/85 transition-colors hover:text-gold">
-              Contact Me
+            <a
+              href={siteConfig.socials.github}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-white/20 bg-transparent px-6 py-3 text-sm font-medium text-white/80 transition-colors hover:bg-white/5 hover:text-white"
+            >
+              GitHub
             </a>
           </motion.div>
 
+          {/* Socials & Location */}
           <motion.div
-            variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-            transition={{ duration: 0.6 }}
-            className="mt-8 flex flex-col items-center gap-5 lg:items-start"
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            className="mt-12 flex items-center gap-4 border-t border-white/10 pt-6"
           >
-            <div className="flex flex-wrap items-center justify-center gap-4 lg:justify-start">
+            <div className="flex gap-2">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
@@ -108,76 +128,40 @@ export default function Hero() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-text/85 shadow-[0_0_0_rgba(0,0,0,0)] transition-all hover:-translate-y-0.5 hover:border-accent/60 hover:text-gold hover:shadow-[0_0_18px_rgba(45,93,79,0.3)]"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/50 transition-colors hover:border-white/30 hover:text-white"
                 >
-                  <Icon size={18} />
+                  <Icon size={16} />
                 </a>
               ))}
             </div>
-
+            <div className="h-4 w-px bg-white/10" />
+            <p className="text-xs text-white/40 uppercase tracking-widest">Kathmandu, NP</p>
           </motion.div>
         </motion.div>
 
+        {/* Right: Portrait Card */}
         <motion.div
-          variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-          transition={{ duration: 0.7 }}
-          className="order-1 relative flex justify-center lg:order-2 lg:justify-end"
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="order-1 flex justify-center lg:order-2 lg:justify-end"
         >
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="relative"
-          >
-            <div className="absolute inset-0 -z-10 mx-auto h-[22rem] w-[22rem] rounded-full bg-accent/20 blur-3xl" />
-
-            <div className="relative h-[220px] w-[220px] md:h-[320px] md:w-[320px]">
-              <div className="absolute inset-0 rounded-full bg-accent/25 blur-2xl" />
-              <div className="relative h-full w-full overflow-hidden rounded-full border-2 border-accent shadow-[0_0_60px_rgba(45,93,79,0.5)] after:pointer-events-none after:absolute after:inset-0 after:rounded-full after:bg-gradient-to-t after:from-[#0a0f0d] after:via-transparent after:to-transparent after:content-['']">
-                <Image
-                  src="/images/profile.jpg"
-                  alt="Pallav Kafle"
-                  width={320}
-                  height={320}
-                  priority
-                  className="h-full w-full rounded-full object-cover object-top"
-                />
-              </div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-                className="absolute -right-3 top-4 hidden rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-text/90 shadow-[0_0_24px_rgba(0,0,0,0.2)] backdrop-blur-sm md:block"
-              >
-                <p className="text-xs uppercase tracking-[0.24em] text-text/55">Degree</p>
-                <p className="mt-1 font-semibold">B.E. Computer</p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.95 }}
-                className="absolute -left-4 bottom-6 hidden rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-text/90 shadow-[0_0_24px_rgba(0,0,0,0.2)] backdrop-blur-sm md:block"
-              >
-                <p className="text-xs uppercase tracking-[0.24em] text-text/55">Focus</p>
-                <p className="mt-1 font-semibold">MERN Stack</p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.1 }}
-                className="absolute -bottom-2 right-4 hidden rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-text/90 shadow-[0_0_24px_rgba(0,0,0,0.2)] backdrop-blur-sm md:block"
-              >
-                <p className="text-xs uppercase tracking-[0.24em] text-text/55">Interest</p>
-                <p className="mt-1 font-semibold">AI Enthusiast</p>
-              </motion.div>
-            </div>
-          </motion.div>
+          <div className="relative aspect-[4/5] w-full max-w-[320px] overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl md:max-w-[400px]">
+            <Image
+              src="/images/profile.jpg"
+              alt="Pallav Kafle"
+              fill
+              priority
+              className="object-cover object-top grayscale-[20%] hover:grayscale-0 transition-all duration-700"
+            />
+            {/* Subtle overlay gradient */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-50" />
+            {/* Gold accent line */}
+            <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-accent to-gold" />
+          </div>
         </motion.div>
 
-        
-      </motion.div>
+      </div>
     </section>
   );
 }
