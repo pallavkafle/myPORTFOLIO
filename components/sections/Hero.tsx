@@ -148,7 +148,7 @@ export default function Hero() {
         >
           <div className="relative aspect-[4/5] w-full max-w-[320px] overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl md:max-w-[400px]">
             <Image
-              src="/images/profile.jpg"
+              src="/images/profile.webp"
               alt="Pallav Kafle"
               fill
               priority

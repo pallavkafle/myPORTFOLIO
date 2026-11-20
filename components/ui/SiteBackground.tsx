@@ -6,7 +6,7 @@ export default function SiteBackground() {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden">
       <Image
-        src="/images/background.jpg"
+        src="/images/background.webp"
         alt=""
         fill
         sizes="100vw"
