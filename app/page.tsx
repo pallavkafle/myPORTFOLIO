@@ -4,8 +4,7 @@ import GitHub from "@/components/sections/GitHub";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 import Projects from "@/components/sections/Projects";
-import Certifications from "@/components/sections/Certifications";
-import Education from "@/components/sections/Education";
+import Journey from "@/components/sections/Journey";
 import Services from "@/components/sections/Services";
 import Skills from "@/components/sections/Skills";
 import Navbar from "@/components/ui/Navbar";
@@ -18,8 +17,7 @@ export default function HomePage() {
       <About />
       <Skills />
       <Services />
-      <Certifications />
-      <Education />
+      <Journey />
       <Projects />
       <GitHub />
       <Contact />
