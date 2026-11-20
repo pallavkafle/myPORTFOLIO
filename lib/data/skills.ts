@@ -7,8 +7,7 @@ import {
 
 export type Skill = {
   name: string;
-  category: string;
-  Icon: IconType;
+  category: string; Icon: IconType;
   desc: string;
 };
 
