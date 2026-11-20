@@ -1,10 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa6";
-import { Mail, Phone } from "lucide-react";
+import { motion } from "framer-motion";
+import { Mail, Copy, Check, ArrowRight } from "lucide-react";
 import { FormEvent, useState } from "react";
-import Card from "@/components/ui/Card";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { siteConfig } from "@/lib/data/site";
 
@@ -17,18 +15,17 @@ type FormState = {
 
 const initialState: FormState = { name: "", email: "", message: "", website: "" };
 
-const contactLinks = [
-  { label: "GitHub", href: siteConfig.socials.github, icon: FaGithub },
-  { label: "LinkedIn", href: siteConfig.socials.linkedin, icon: FaLinkedin },
-  { label: "Instagram", href: siteConfig.socials.instagram, icon: FaInstagram },
-  { label: "Email", href: `mailto:${siteConfig.email}`, icon: Mail },
-];
-
 export default function Contact() {
   const [formState, setFormState] = useState<FormState>(initialState);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
-  const reducedMotion = useReducedMotion();
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(siteConfig.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const handleChange =
     (field: keyof FormState) =>
@@ -59,7 +56,7 @@ export default function Contact() {
       });
       if (!response.ok) throw new Error("Contact request failed");
       setStatus("success");
-      setMessage("Message sent successfully");
+      setMessage("Message sent successfully. I'll be in touch!");
       setFormState(initialState);
     } catch {
       setStatus("error");
@@ -68,155 +65,128 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative z-10 mx-auto max-w-6xl px-5 py-20 lg:px-8">
-      <motion.div
-        initial={reducedMotion ? false : { opacity: 0, y: 24 }}
-        whileInView={reducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: reducedMotion ? 0 : 0.55 }}
-      >
-        <SectionHeading
-          label="Contact"
-          title={
-            <>
-              <span className="text-text">Let&apos;s </span>
-              <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">connect.</span>
-            </>
-          }
-          subtitle="A message is the start of something."
-        />
-      </motion.div>
-
-      <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
+    <section id="contact" className="relative z-10 mx-auto max-w-6xl px-5 py-24 lg:px-8">
+      <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
+        
+        {/* Left Side: Editorial Text & Email */}
         <motion.div
-          initial={reducedMotion ? false : { opacity: 0, y: 24 }}
-          whileInView={reducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: reducedMotion ? 0 : 0.55 }}
+          transition={{ duration: 0.55 }}
+          className="flex flex-col justify-center"
         >
-          <Card className="rounded-2xl border border-white/10 bg-black/40 p-5 font-mono text-sm text-text/80 shadow-[0_0_30px_rgba(0,0,0,0.35)] backdrop-blur-sm">
-            <div className="mb-5 flex items-center gap-2 border-b border-white/10 pb-4 text-text/60">
-              <span className="h-3 w-3 rounded-full bg-red-400/80" />
-              <span className="h-3 w-3 rounded-full bg-yellow-400/80" />
-              <span className="h-3 w-3 rounded-full bg-green-400/80" />
-              <span className="ml-3">terminal — contact.sh</span>
-            </div>
+          <SectionHeading
+            label="Contact"
+            title={
+              <>
+                <span className="text-text">Let&apos;s build </span>
+                <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">something.</span>
+              </>
+            }
+            subtitle="Whether you have a project in mind, a question, or just want to say hi, my inbox is always open."
+          />
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <label className="block space-y-2">
-                <span className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-text/60">
-                  <span className="text-accent">&gt;</span>Name
-                </span>
-                <input
-                  type="text" value={formState.name} onChange={handleChange("name")}
-                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/30 focus:border-accent"
-                  placeholder="Your name" autoComplete="name" required
-                />
-              </label>
-
-              <label className="block space-y-2">
-                <span className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-text/60">
-                  <span className="text-accent">&gt;</span>Email
-                </span>
-                <input
-                  type="email" value={formState.email} onChange={handleChange("email")}
-                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/30 focus:border-accent"
-                  placeholder="name@example.com" autoComplete="email" required
-                />
-              </label>
-
-              <label className="block space-y-2">
-                <span className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-text/60">
-                  <span className="text-accent">&gt;</span>Message
-                </span>
-                <textarea
-                  value={formState.message} onChange={handleChange("message")}
-                  rows={6}
-                  className="w-full border-b border-white/10 bg-transparent px-0 py-2 text-text outline-none placeholder:text-text/30 focus:border-accent"
-                  placeholder="Type your message..." required
-                />
-              </label>
-
-              <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
-                <label>
-                  Leave empty
-                  <input
-                    type="text" name="website" tabIndex={-1} autoComplete="off"
-                    value={formState.website} onChange={handleChange("website")}
-                  />
-                </label>
+          <div className="mt-8">
+            <p className="font-mono text-xs uppercase tracking-widest text-white/40 mb-3">Direct Email</p>
+            <button
+              onClick={handleCopyEmail}
+              className="group flex items-center gap-3 text-lg font-medium text-text transition-colors hover:text-emerald-400 md:text-xl"
+            >
+              {siteConfig.email}
+              <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-colors group-hover:border-emerald-400/30 group-hover:bg-emerald-400/10">
+                {copied ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} className="text-white/60 group-hover:text-emerald-400" />}
               </div>
-
-              <div className="flex flex-wrap items-center gap-3">
-                <button
-                  type="submit" disabled={status === "loading"}
-                  className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 font-mono text-sm text-text transition-colors hover:bg-[#356a5a] disabled:cursor-not-allowed disabled:opacity-70"
-                >
-                  {status === "loading" ? (
-                    <>
-                      sending_
-                      <span className="inline-block h-4 w-2 animate-blink bg-text" />
-                    </>
-                  ) : (
-                    "send message ↵"
-                  )}
-                </button>
-
-                <span
-                  role="status"
-                  aria-live="polite"
-                  className={`text-sm ${
-                    status === "success" ? "text-green-400"
-                    : status === "error" ? "text-red-400"
-                    : "text-text/60"
-                  }`}
-                >
-                  {status === "success" ? "✓ message sent" : message}
-                </span>
-              </div>
-            </form>
-
-            <div className="mt-6 border-t border-white/10 pt-5 font-mono text-sm text-text/80">
-              <div className="space-y-2">
-                <p><Mail size={16} className="inline mr-2" /> <a className="text-gold" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
-                <p><Phone size={16} className="inline mr-2" /> <a className="text-gold" href={`tel:+977${siteConfig.phone}`}>{siteConfig.phone}</a></p>
-              </div>
-
-              <div className="mt-5 flex flex-wrap gap-3">
-                {contactLinks.map(({ label, href, icon: Icon }) => (
-                  <a
-                    key={label} href={href}
-                    target={label === "Email" ? undefined : "_blank"}
-                    rel={label === "Email" ? undefined : "noreferrer"}
-                    aria-label={label}
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-text/80 transition-all hover:-translate-y-0.5 hover:border-accent/50 hover:text-accent hover:shadow-[0_0_18px_rgba(45,93,79,0.25)]"
-                  >
-                    <Icon size={18} />
-                  </a>
-                ))}
-              </div>
-            </div>
-          </Card>
+            </button>
+            <p className="mt-2 text-xs text-white/40">
+              {copied ? "Copied to clipboard!" : "Click to copy"}
+            </p>
+          </div>
         </motion.div>
 
+        {/* Right Side: Minimal Form */}
         <motion.div
-          initial={reducedMotion ? false : { opacity: 0, y: 24 }}
-          whileInView={reducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: reducedMotion ? 0 : 0.55 }}
+          transition={{ duration: 0.55, delay: 0.1 }}
         >
-          <Card className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
-            <p className="text-sm font-medium tracking-[0.3em] text-text/60 uppercase">Availability</p>
-            <p className="mt-4 leading-7 text-text/80">
-              I am open to freelance work, internships, and collaborative builds where quality, honesty, and consistent progress matter.
-            </p>
-            <div className="mt-8 rounded-[1.5rem] border border-white/10 bg-black/25 p-5">
-              <p className="text-sm font-medium tracking-[0.24em] text-text/60 uppercase">Quick note</p>
-              <p className="mt-3 text-sm leading-7 text-text/70">
-                If the form fails, email me directly and I&apos;ll respond as soon as possible.
-              </p>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <div className="grid gap-6 sm:grid-cols-2">
+              <label className="block">
+                <span className="mb-2 block font-mono text-xs uppercase tracking-widest text-white/40">Name</span>
+                <input
+                  type="text"
+                  value={formState.name}
+                  onChange={handleChange("name")}
+                  className="w-full border-b border-white/10 bg-transparent pb-3 text-sm text-text outline-none placeholder:text-white/20 focus:border-emerald-400 transition-colors"
+                  placeholder="Your name"
+                  required
+                />
+              </label>
+              <label className="block">
+                <span className="mb-2 block font-mono text-xs uppercase tracking-widest text-white/40">Email</span>
+                <input
+                  type="email"
+                  value={formState.email}
+                  onChange={handleChange("email")}
+                  className="w-full border-b border-white/10 bg-transparent pb-3 text-sm text-text outline-none placeholder:text-white/20 focus:border-emerald-400 transition-colors"
+                  placeholder="name@example.com"
+                  required
+                />
+              </label>
             </div>
-          </Card>
+
+            <label className="block">
+              <span className="mb-2 block font-mono text-xs uppercase tracking-widest text-white/40">Message</span>
+              <textarea
+                value={formState.message}
+                onChange={handleChange("message")}
+                rows={4}
+                className="w-full resize-none border-b border-white/10 bg-transparent pb-3 text-sm text-text outline-none placeholder:text-white/20 focus:border-emerald-400 transition-colors"
+                placeholder="How can I help you?"
+                required
+              />
+            </label>
+
+            {/* Honeypot */}
+            <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
+              <label>
+                Leave empty
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formState.website}
+                  onChange={handleChange("website")}
+                />
+              </label>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-between gap-4 pt-4">
+              <button
+                type="submit"
+                disabled={status === "loading"}
+                className="group inline-flex items-center gap-2 rounded-full bg-text px-6 py-3 text-sm font-semibold text-background transition-transform hover:scale-105 active:scale-95 disabled:opacity-70 disabled:hover:scale-100"
+              >
+                {status === "loading" ? "Sending..." : "Send Message"}
+                {status !== "loading" && <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />}
+              </button>
+
+              <span
+                role="status"
+                aria-live="polite"
+                className={`text-sm ${
+                  status === "success" ? "text-emerald-400"
+                  : status === "error" ? "text-red-400"
+                  : "text-white/40"
+                }`}
+              >
+                {message}
+              </span>
+            </div>
+          </form>
         </motion.div>
       </div>
     </section>
