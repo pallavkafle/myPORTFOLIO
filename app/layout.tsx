@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 import SiteBackground from "@/components/ui/SiteBackground";
-import "./globals.css";
 import MotionProvider from "@/components/ui/MotionProvider";
+import { siteConfig } from "@/lib/data/site";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const serif = Instrument_Serif({ weight: "400", subsets: ["latin"], variable: "--font-serif", display: "swap" });
@@ -42,12 +43,30 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+  // JSON-LD Schema for Google Search
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: siteConfig.name,
+    url: SITE_URL,
+    jobTitle: "MERN Stack Developer & AI Enthusiast",
+    sameAs: [
+      siteConfig.socials.github,
+      siteConfig.socials.linkedin,
+      siteConfig.socials.instagram,
+    ],
+  };
+
   return (
     <html lang="en" className={`${inter.variable} ${serif.variable} ${mono.variable}`}>
       <body className="font-sans antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <MotionProvider>
-         <SiteBackground />
-         {children}
+          <SiteBackground />
+          {children}
         </MotionProvider>
       </body>
     </html>
