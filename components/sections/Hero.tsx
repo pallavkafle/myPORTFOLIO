@@ -65,7 +65,7 @@ export default function Hero() {
           <div className="mt-6 mb-2 overflow-hidden">
             <motion.h1
               variants={textReveal}
-              className="text-[clamp(3.5rem,10vw,7.5rem)] font-serif font-normal leading-[0.9] tracking-tight text-text"
+              className="text-[clamp(3.5rem,10vw,7.5rem)] font-serif font-normal leading-[0.9] tracking-tight text-text drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
             >
               Pallav Kafle<span className="text-gold">.</span>
             </motion.h1>
