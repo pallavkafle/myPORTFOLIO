@@ -5,6 +5,7 @@ import SiteBackground from "@/components/ui/SiteBackground";
 import MotionProvider from "@/components/ui/MotionProvider";
 import { siteConfig } from "@/lib/data/site";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const serif = Instrument_Serif({ weight: "400", subsets: ["latin"], variable: "--font-serif", display: "swap" });
@@ -68,6 +69,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           <SiteBackground />
           {children}
         </MotionProvider>
+        <Analytics />
       </body>
     </html>
   );
