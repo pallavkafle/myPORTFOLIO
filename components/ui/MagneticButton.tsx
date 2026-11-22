@@ -1,9 +1,15 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, ReactNode } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
-export default function MagneticButton({ children, href, className, ...props }: React.ComponentPropsWithoutRef<typeof motion.a>) {
+type MagneticButtonProps = {
+  children: ReactNode;
+  href: string;
+  className?: string;
+};
+
+export default function MagneticButton({ children, href, className = "" }: MagneticButtonProps) {
   const ref = useRef<HTMLAnchorElement>(null);
   const [isFinePointer, setIsFinePointer] = useState(false);
 
@@ -45,7 +51,6 @@ export default function MagneticButton({ children, href, className, ...props }: 
       onMouseLeave={handleMouseLeave}
       style={{ x: isFinePointer ? springX : 0, y: isFinePointer ? springY : 0 }}
       className={`group relative flex h-[130px] w-[130px] items-center justify-center overflow-hidden rounded-full border border-white/20 bg-transparent text-sm font-medium text-text transition-colors hover:border-transparent ${className}`}
-      {...props}
     >
       <div className="absolute inset-0 h-full w-full translate-y-full bg-text transition-transform duration-500 ease-in-out group-hover:translate-y-0" />
       <span className="relative z-10 transition-colors duration-500 group-hover:text-background">
