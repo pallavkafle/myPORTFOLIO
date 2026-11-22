@@ -16,7 +16,7 @@ const badgeStyle: Record<string, string> = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="px-6 py-24 md:px-16 bg-black/20">
+    <section id="skills" className="px-6 py-16 md:px-16 bg-black/20">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

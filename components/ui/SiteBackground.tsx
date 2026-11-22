@@ -24,15 +24,12 @@ export default function SiteBackground() {
           className="object-cover object-[center_35%]"
         />
       </motion.div>
-
-      {/* 1. Top edge vignette for navbar clarity */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f0d]/80 via-transparent to-transparent" />
       
-      {/* 2. Radial edge softening so center text pops */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,#0a0f0d_100%)] opacity-70" />
+      {/* Global Left-to-Right Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f0d]/95 via-[#0a0f0d]/60 to-transparent" />
       
-      {/* 3. Seamless bottom fade into the site's background color */}
-      <div className="absolute inset-x-0 bottom-0 h-[25vh] bg-gradient-to-t from-[#0a0f0d] to-transparent" />
+      {/* Seamless Bottom Fade */}
+      <div className="absolute inset-x-0 bottom-0 h-[20vh] bg-gradient-to-t from-[#0a0f0d] to-transparent" />
     </div>
   );
 }

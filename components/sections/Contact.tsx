@@ -65,7 +65,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative z-10 mx-auto max-w-6xl px-5 py-24 lg:px-8">
+    <section id="contact" className="relative z-10 mx-auto max-w-6xl px-5 py-16 lg:px-8">
       <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
         
         {/* Left Side: Editorial Text & Email */}

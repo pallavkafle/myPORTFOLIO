@@ -13,7 +13,7 @@ export default function Projects() {
 
   return (
     <>
-      <section id="projects" className="relative z-10 mx-auto max-w-6xl px-5 py-24 lg:px-8">
+      <section id="projects" className="relative z-10 mx-auto max-w-6xl px-5 py-16 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

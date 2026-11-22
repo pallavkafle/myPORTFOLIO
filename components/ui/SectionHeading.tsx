@@ -9,7 +9,7 @@ type SectionHeadingProps = {
 
 export default function SectionHeading({ label, title, subtitle, className = "" }: SectionHeadingProps) {
   return (
-    <div className={`mb-10 max-w-2xl ${className}`}>
+    <div className={`mb-8 max-w-2xl ${className}`}>
       <div className="mb-4 flex items-center gap-3">
         <div className="h-px w-8 bg-accent" />
         <p className="font-mono text-xs font-medium uppercase tracking-[0.3em] text-accent">
@@ -21,7 +21,7 @@ export default function SectionHeading({ label, title, subtitle, className = "" 
         {title}
       </h2>
       {subtitle && (
-        <p className="max-w-xl text-sm text-white/50 md:text-base">{subtitle}</p>
+        <p className="max-w-xl text-sm text-white/70 md:text-base">{subtitle}</p>
       )}
     </div>
   );

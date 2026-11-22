@@ -6,7 +6,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 
 export default function About() {
   return (
-    <section id="about" className="relative py-24 px-6 md:px-16">
+    <section id="about" className="relative py-16 px-6 md:px-16">
       <div className="mx-auto max-w-6xl grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
         
         <motion.div

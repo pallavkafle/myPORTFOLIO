@@ -20,7 +20,7 @@ export default function Journey() {
   });
 
   return (
-    <section id="journey" className="relative z-10 mx-auto max-w-4xl px-5 py-24 lg:px-8">
+    <section id="journey" className="relative z-10 mx-auto max-w-4xl px-5 py-16 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
