@@ -1,92 +1,77 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import { GraduationCap, Award, ExternalLink } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { journeyItems } from "@/lib/data/journey";
+
+const journeyItems = [
+  {
+    id: "bachelor",
+    type: "education",
+    title: "B.E. Computer Engineering",
+    provider: "Himalaya College of Engineering, TU",
+    date: "Present",
+    description: "Expected graduation 2084 B.S.",
+    link: null,
+    image: null,
+  },
+  {
+    id: "mern-cert",
+    type: "certificate",
+    title: "MERN Stack",
+    provider: "Broadway Infosys",
+    date: "Completed",
+    description: "45 hours.",
+    link: null,
+    image: null,
+  },
+  {
+    id: "gen-ai-cert",
+    type: "certificate",
+    title: "Generative AI & LLMs",
+    provider: "Broadway Infosys",
+    date: "Completed",
+    description: "45 hours.",
+    link: null,
+    image: null,
+  },
+];
 
 export default function Journey() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start center", "end center"],
-  });
-
-  const scaleY = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
-
   return (
     <section id="journey" className="relative z-10 mx-auto max-w-4xl px-5 py-16 lg:px-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
+      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
         <SectionHeading
           label="Journey"
-          title={
-            <>
-              <span className="text-text">Education & </span>
-              <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Certifications.</span>
-            </>
-          }
-          subtitle="Continuous learning and formal education."
+          title={<span className="text-text">Learn<span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">ing.</span></span>}
         />
       </motion.div>
 
-      <div ref={containerRef} className="relative mt-16 pl-8 md:pl-0">
-        {/* Static background line */}
-        <div className="absolute left-[1.05rem] top-0 bottom-0 w-px bg-white/10 md:left-1/2 md:-translate-x-1/2" />
-        
-        {/* Scroll-linked animated line */}
-        <motion.div
-          className="absolute left-[1.05rem] top-0 bottom-0 w-px bg-emerald-400 md:left-1/2 md:-translate-x-1/2 origin-top"
-          style={{ scaleY }}
-        />
+      <div className="relative mt-12 pl-6 md:pl-8">
+        <div className="absolute left-[3px] top-2 bottom-0 w-px bg-white/10 md:left-[7px]" />
 
-        <div className="flex flex-col gap-12">
-          {journeyItems.map((item, index) => {
-            const isEven = index % 2 === 0;
-            return (
-              <div key={item.id} className={`relative flex items-center md:justify-between md:even:flex-row-reverse`}>
-                {/* Timeline dot */}
-                <div className="absolute left-[-1.55rem] z-10 flex h-8 w-8 items-center justify-center rounded-full border border-emerald-400/30 bg-[#0a0f0d] md:left-1/2 md:-translate-x-1/2">
-                  {item.type === "education" ? (
-                    <GraduationCap size={14} className="text-emerald-400" />
-                  ) : (
-                    <Award size={14} className="text-gold" />
-                  )}
-                </div>
-
-                {/* Content Card */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  className={`w-full md:w-[45%] ${isEven ? "md:text-right" : "md:text-left"}`}
-                >
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-colors hover:border-white/20 hover:bg-white/10">
-                    <span className="font-mono text-xs uppercase tracking-widest text-emerald-400">{item.date}</span>
-                    <h4 className="mt-2 text-xl font-serif text-text">{item.title}</h4>
-                    <p className="mt-1 text-sm font-medium text-white/60">{item.provider}</p>
-                    {item.description && (
-                      <p className="mt-3 text-sm leading-relaxed text-white/40">{item.description}</p>
-                    )}
-                    {item.link && (
-                      <a href={item.link} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-1 text-xs text-gold hover:text-white transition-colors">
-                        Verify <ExternalLink size={12} />
-                      </a>
-                    )}
-                  </div>
-                </motion.div>
+        <div className="flex flex-col gap-10">
+          {journeyItems.map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="relative"
+            >
+              <div className="absolute -left-[1.65rem] top-1 flex h-4 w-4 items-center justify-center rounded-full border border-emerald-400/30 bg-[#0a0f0d] md:-left-[2.15rem]">
+                <div className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
               </div>
-            );
-          })}
+
+              <div className="flex flex-col gap-1">
+                <span className="font-mono text-xs uppercase tracking-widest text-emerald-400">{item.date}</span>
+                <h3 className="text-xl font-serif text-text">{item.title}</h3>
+                <p className="text-sm text-white/60">{item.provider}</p>
+                {item.description && <p className="text-sm text-white/40 mt-1">{item.description}</p>}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

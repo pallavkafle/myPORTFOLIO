@@ -23,36 +23,21 @@ export default function Footer() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <>
-      <footer className="relative z-10 border-t border-white/10 bg-[#0a0f0d]">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-5 py-8 md:flex-row lg:px-8">
-          
-          {/* Left: Copyright */}
+      <footer className="relative z-10 bg-gradient-to-t from-[#0a0f0d] to-transparent pt-16">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-5 pb-8 md:flex-row lg:px-8">
           <div className="flex flex-col items-center md:items-start gap-1">
             <p className="text-sm font-medium text-white/80">
               © {new Date().getFullYear()} {siteConfig.name}
             </p>
-            <p className="text-xs text-white/40">
-              Built with Next.js & Tailwind
+            <p className="text-xs text-white/50">
+              Kathmandu, Nepal
             </p>
           </div>
-
-          {/* Right: Socials */}
           <div className="flex items-center gap-4">
             {socials.map(({ label, href, icon: Icon }) => (
-              <a
-                key={label}
-                href={href}
-                target={label === "Email" ? undefined : "_blank"}
-                rel={label === "Email" ? undefined : "noreferrer"}
-                aria-label={label}
-                className="text-white/40 transition-colors hover:text-emerald-400"
-              >
+              <a key={label} href={href} target={label === "Email" ? undefined : "_blank"} rel={label === "Email" ? undefined : "noreferrer"} aria-label={label} className="text-white/40 transition-colors hover:text-emerald-400">
                 <Icon size={18} />
               </a>
             ))}
@@ -60,16 +45,8 @@ export default function Footer() {
         </div>
       </footer>
 
-      {/* Floating Back to Top Button */}
       {showTopButton && (
-        <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          onClick={scrollToTop}
-          aria-label="Back to top"
-          className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 backdrop-blur-md transition-colors hover:border-emerald-400/50 hover:text-emerald-400"
-        >
+        <motion.button initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="Back to top" className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 backdrop-blur-md transition-colors hover:border-emerald-400/50 hover:text-emerald-400">
           <ArrowUp size={18} />
         </motion.button>
       )}
