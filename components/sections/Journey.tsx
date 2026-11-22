@@ -3,8 +3,18 @@
 import { motion } from "framer-motion";
 import { GraduationCap, Award, ExternalLink } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
+import Image from "next/image";
 
-const journeyItems = [
+const journeyItems: {
+  id: string;
+  type: "education" | "certificate";
+  title: string;
+  provider: string;
+  date: string;
+  description: string;
+  link: string | null;
+  image: string | null;
+}[] = [
   {
     id: "bachelor",
     type: "education",
@@ -83,11 +93,11 @@ export default function Journey() {
 
                 {/* Landscape Certificate Image Placeholder */}
                 {item.type === "certificate" && item.id !== "reserved" && (
-                  <div className="mt-6 w-full aspect-video overflow-hidden rounded-lg border border-white/10 bg-white/5 flex items-center justify-center">
+                  <div className="mt-6 w-[115%] -ml-[7.5%] aspect-video overflow-hidden rounded-lg border border-white/10 bg-white/5 flex items-center justify-center relative">
                     {item.image ? (
-                      <img src={item.image} alt={item.title} className="h-full w-full object-cover" />
+                      <Image src={item.image} alt={item.title} fill className="object-cover" />
                     ) : (
-                      <span className="font-mono text-[10px] text-white/30">Certificate image</span>
+                      <span className="font-mono text-xs text-white/40">Certificate image</span>
                     )}
                   </div>
                 )}
@@ -126,11 +136,11 @@ export default function Journey() {
                 {item.description && <p className="text-sm text-white/40">{item.description}</p>}
                 
                 {item.type === "certificate" && item.id !== "reserved" && (
-                  <div className="mt-4 w-full aspect-video overflow-hidden rounded-lg border border-white/10 bg-white/5 flex items-center justify-center">
+                  <div className="mt-4 w-full aspect-video overflow-hidden rounded-lg border border-white/10 bg-white/5 flex items-center justify-center relative">
                     {item.image ? (
-                      <img src={item.image} alt={item.title} className="h-full w-full object-cover" />
+                      <Image src={item.image} alt={item.title} fill className="object-cover" />
                     ) : (
-                      <span className="font-mono text-[10px] text-white/30">Certificate image</span>
+                      <span className="font-mono text-xs text-white/40">Certificate image</span>
                     )}
                   </div>
                 )}

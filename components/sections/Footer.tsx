@@ -31,13 +31,13 @@ export default function Footer() {
             <p className="text-sm font-medium text-white/80">
               © {new Date().getFullYear()} {siteConfig.name}
             </p>
-            <p className="text-xs text-white/50">
+            <p className="text-xs text-white/60">
               Kathmandu, Nepal
             </p>
           </div>
           <div className="flex items-center gap-4">
             {socials.map(({ label, href, icon: Icon }) => (
-              <a key={label} href={href} target={label === "Email" ? undefined : "_blank"} rel={label === "Email" ? undefined : "noreferrer"} aria-label={label} className="text-white/40 transition-colors hover:text-emerald-400">
+              <a key={label} href={href} target={label === "Email" ? undefined : "_blank"} rel={label === "Email" ? undefined : "noreferrer"} aria-label={label} className="text-white/50 transition-colors hover:text-emerald-400">
                 <Icon size={18} />
               </a>
             ))}
@@ -46,8 +46,15 @@ export default function Footer() {
       </footer>
 
       {showTopButton && (
-        <motion.button initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="Back to top" className="fixed bottom-4 right-4 z-50 flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 backdrop-blur-md transition-colors hover:border-emerald-400/50 hover:text-emerald-400">
-          <ArrowUp size={18} />
+        <motion.button 
+          initial={{ opacity: 0, scale: 0.8 }} 
+          animate={{ opacity: 1, scale: 1 }} 
+          exit={{ opacity: 0, scale: 0.8 }} 
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} 
+          aria-label="Back to top" 
+          className="fixed bottom-4 right-4 z-50 flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-[#0a0f0d]/80 text-white/50 backdrop-blur-md transition-colors hover:border-emerald-400/50 hover:text-emerald-400"
+        >
+          <ArrowUp size={14} />
         </motion.button>
       )}
     </>
