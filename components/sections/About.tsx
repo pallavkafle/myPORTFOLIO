@@ -18,20 +18,20 @@ export default function About() {
         >
           <SectionHeading
             label="About"
-            title={<span className="text-text">The person <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">behind the code.</span></span>}
+            title={<span className="text-text">A little <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">about me.</span></span>}
           />
           
           <div className="mt-8 space-y-4 border-l border-white/10 pl-6">
             <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-white/40">Location</p>
+              <p className="font-mono text-xs uppercase tracking-widest text-white/50">Location</p>
               <p className="text-sm text-white/80">Kathmandu, Nepal</p>
             </div>
             <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-white/40">Education</p>
+              <p className="font-mono text-xs uppercase tracking-widest text-white/50">Education</p>
               <p className="text-sm text-white/80">Himalaya College of Engineering</p>
             </div>
             <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-white/40">Currently Building</p>
+              <p className="font-mono text-xs uppercase tracking-widest text-white/50">Currently Building</p>
               <p className="text-sm text-emerald-400">TaskSathi</p>
             </div>
           </div>
@@ -43,16 +43,19 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55, delay: 0.1 }}
-          className="space-y-8 text-base leading-relaxed text-white/70 md:text-lg"
+          className="space-y-8 text-base leading-relaxed text-white/80 md:text-lg"
         >
           <p>
-            I&apos;m a computer engineering student at Himalaya College of Engineering in Kathmandu.
+            I&apos;m a computer engineering student at Himalaya College of Engineering in Kathmandu. I chose this field because technology fascinates me, and I enjoy making things.
           </p>
           <p>
-            I started with the MERN stack because it let me build a whole app alone. Then I got curious about AI. <span className="text-white">TaskSathi</span> is where I&apos;m testing it, and the part I care about is making AI wait for a human yes.
+            I started with the MERN stack because it let me build a whole app alone. On TrailMind and ShapeLogic I worked mostly on the backend and getting things deployed. TaskSathi is where I&apos;m learning to build AI features carefully.
           </p>
           <p>
-            The photo behind this page is Annapurna. I&apos;m open to freelance work and internships, so if you have something to build, <a href="#contact" className="text-emerald-400 underline underline-offset-4 hover:text-emerald-300">write to me.</a>
+            Away from the screen I trek, bike and listen to music. I&apos;ve walked to Annapurna Base Camp and Shey Phoksundo.
+          </p>
+          <p>
+            I take freelance work and I&apos;m open to internships. If you have something to build, write to me.
           </p>
         </motion.div>
 

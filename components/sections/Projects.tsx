@@ -34,7 +34,6 @@ export default function Projects() {
                 transition={{ duration: 0.6 }}
                 className={`flex flex-col gap-8 lg:items-center lg:gap-12 ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"}`}
               >
-                {/* Text Side - Max 520px */}
                 <div className="flex-1 max-w-[520px] space-y-4">
                   <div className="flex items-center gap-3">
                     <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 font-mono text-xs text-emerald-400">{project.status}</span>
@@ -57,7 +56,6 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Visual Side */}
                 <div className="flex-1 w-full">
                   <ProjectCarousel project={project} />
                 </div>
@@ -72,11 +70,9 @@ export default function Projects() {
   );
 }
 
-// Carousel Component for 3 frames
 function ProjectCarousel({ project }: { project: Project }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const isMobile = project.type === "Mobile app";
-  const frames = isMobile ? [0, 1, 2] : [0]; 
   
   if (project.images.length === 0) {
     return (
@@ -107,7 +103,6 @@ function ProjectCarousel({ project }: { project: Project }) {
   );
 }
 
-// Detailed Modal
 function ProjectModal({ project, onClose }: { project: Project | null; onClose: () => void }) {
   const modalRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState<"overview" | "behaves">("overview");
@@ -135,10 +130,9 @@ function ProjectModal({ project, onClose }: { project: Project | null; onClose: 
           exit={{ opacity: 0, scale: 0.95 }}
           className="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-[#0a0f0d] shadow-2xl flex flex-col"
         >
-          {/* Fixed Header */}
           <div className="flex items-center justify-between border-b border-white/10 bg-[#0a0f0d] p-6 z-10 sticky top-0">
             <div>
-              <p className="font-mono text-xs tracking-widest text-emerald-400 uppercase">{project.type} • {project.status}</p>
+              <p className="font-mono text-xs tracking-widest text-emerald-400 uppercase">{project.type} â€¢ {project.status}</p>
               <h3 className="mt-1 font-serif text-3xl text-text md:text-4xl">{project.title}</h3>
             </div>
             <button onClick={onClose} className="rounded-full border border-white/10 bg-white/5 p-2 text-white/70 hover:text-white" aria-label="Close modal">
@@ -148,8 +142,6 @@ function ProjectModal({ project, onClose }: { project: Project | null; onClose: 
 
           <div className="overflow-y-auto p-6 md:p-8 scrollbar-thin scrollbar-thumb-white/20">
             <div className="grid gap-12 lg:grid-cols-[1fr_350px]">
-              
-              {/* Left Column (Text) */}
               <div className="space-y-8">
                 <div>
                   <h4 className="mb-3 font-mono text-xs tracking-widest text-gold uppercase">Overview</h4>
@@ -215,7 +207,6 @@ function ProjectModal({ project, onClose }: { project: Project | null; onClose: 
                 )}
               </div>
 
-              {/* Right Column (Sticky Gallery & Links) */}
               <div className="space-y-8">
                 {project.images.length > 0 && (
                   <div className="space-y-3">
@@ -248,7 +239,6 @@ function ProjectModal({ project, onClose }: { project: Project | null; onClose: 
                   )}
                 </div>
               </div>
-
             </div>
           </div>
         </motion.div>
