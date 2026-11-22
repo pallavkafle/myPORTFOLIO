@@ -1,72 +1,81 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { skills } from "@/lib/data/skills";
-
-const badgeStyle: Record<string, string> = {
-  Frontend: "border-blue-400/30 text-blue-400 bg-blue-400/5",
-  Backend: "border-emerald-400/30 text-emerald-400 bg-emerald-400/5",
-  Database: "border-green-400/30 text-green-400 bg-green-400/5",
-  Fullstack: "border-purple-400/30 text-purple-400 bg-purple-400/5",
-  Mobile: "border-orange-400/30 text-orange-400 bg-orange-400/5",
-  AI: "border-gold/30 text-gold bg-gold/5",
-  Tools: "border-white/30 text-white/70 bg-white/5"
-};
+import { skillGroups } from "@/lib/data/skills";
 
 export default function Skills() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHoverable, setIsHoverable] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const finePointer = window.matchMedia("(pointer: fine)").matches;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setIsHoverable(finePointer && !reducedMotion);
+  }, []);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isHoverable || !containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    setMousePosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
+  // The text content rendered twice (once for baseline, once for the spotlight mask)
+  const SkillList = ({ isSpotlight = false }: { isSpotlight?: boolean }) => (
+    <div className={`space-y-12 ${isSpotlight ? "pointer-events-none text-white" : "text-white/40"}`}>
+      {skillGroups.map((group) => (
+        <div key={group.category} className="grid gap-4 md:grid-cols-[200px_1fr] md:gap-8">
+          <div>
+            <h3 className={`font-mono text-xs uppercase tracking-widest ${isSpotlight ? "text-emerald-400" : "text-emerald-400/40"}`}>
+              {group.category}
+            </h3>
+          </div>
+          <div className="space-y-3">
+            {group.items.map((item) => (
+              <div key={item.name} className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between border-b border-white/5 pb-3">
+                <span className="text-lg font-serif">{item.name}</span>
+                <span className="text-sm font-mono mt-1 sm:mt-0">{item.desc}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
   return (
-    <section id="skills" className="px-6 py-16 md:px-16 bg-black/20">
-      <div className="mx-auto max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+    <section id="skills" className="px-5 py-16 lg:px-8 bg-black/20">
+      <div className="mx-auto max-w-5xl">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
           <SectionHeading
             label="Skills"
-            title={
-              <>
-                <span className="text-text">Skills in </span>
-                <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">My Arsenal</span>
-              </>
-            }
-            subtitle="The technologies and tools I use to build production-ready applications."
+            title={<span className="text-text">What I build <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">with.</span></span>}
+            subtitle="Grouped by what I used them for."
           />
         </motion.div>
 
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {skills.map((skill, index) => {
-            const Icon = skill.Icon;
-            return (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05, duration: 0.5 }}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/30 hover:bg-white/[0.04] hover:shadow-[0_8px_30px_rgba(45,93,79,0.12)]"
-              >
-                {/* Subtle top gradient line */}
-                <div className="absolute left-0 top-0 h-[2px] w-full bg-gradient-to-r from-transparent via-emerald-400/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                
-                <div className="flex items-start justify-between">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-black/40 shadow-inner transition-colors duration-300 group-hover:border-emerald-400/30 group-hover:bg-emerald-400/5">
-                    <Icon className="h-7 w-7 text-white/70 transition-colors duration-300 group-hover:text-emerald-400" />
-                  </div>
-                  <span className={`rounded-full border px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest ${badgeStyle[skill.category] ?? "border-white/20 bg-white/5 text-white/50"}`}>
-                    {skill.category}
-                  </span>
-                </div>
+        <div 
+          ref={containerRef}
+          onMouseMove={handleMouseMove}
+          className="relative mt-12"
+        >
+          {/* Base Layer */}
+          <SkillList />
 
-                <h3 className="mt-6 text-xl font-serif text-text">{skill.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/50">
-                  {skill.desc}
-                </p>
-              </motion.div>
-            );
-          })}
+          {/* Spotlight Layer */}
+          {isHoverable && (
+            <div 
+              className="absolute inset-0 z-10"
+              style={{
+                maskImage: `radial-gradient(circle 250px at ${mousePosition.x}px ${mousePosition.y}px, white 10%, transparent 100%)`,
+                WebkitMaskImage: `radial-gradient(circle 250px at ${mousePosition.x}px ${mousePosition.y}px, white 10%, transparent 100%)`,
+              }}
+            >
+              <SkillList isSpotlight />
+            </div>
+          )}
         </div>
       </div>
     </section>
