@@ -92,20 +92,6 @@ export default function Projects() {
             );
           })}
         </div>
-
-        {/* Compact Earlier Project Line */}
-        {earlierProject && (
-          <div className="mt-16 border-t border-white/10 pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <p className="text-sm text-white/50">
-              <strong className="text-white/80 font-medium">Earlier project:</strong> {earlierProject.summary}
-            </p>
-            {earlierProject.repo && (
-              <a href={earlierProject.repo} target="_blank" rel="noreferrer" className="text-sm text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
-                GitHub <ExternalLink size={14} />
-              </a>
-            )}
-          </div>
-        )}
       </section>
 
       <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />

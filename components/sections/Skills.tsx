@@ -24,7 +24,7 @@ export default function Skills() {
 
   // The text content rendered twice (once for baseline, once for the spotlight mask)
   const SkillList = ({ isSpotlight = false }: { isSpotlight?: boolean }) => (
-    <div className={`space-y-12 ${isSpotlight ? "pointer-events-none text-white" : "text-white/40"}`}>
+    <div className={`space-y-12 ${isSpotlight ? "pointer-events-none text-white" : "text-white/70"}`}>
       {skillGroups.map((group) => (
         <div key={group.category} className="grid gap-4 md:grid-cols-[200px_1fr] md:gap-8">
           <div>
@@ -46,7 +46,7 @@ export default function Skills() {
   );
 
   return (
-    <section id="skills" className="px-5 py-16 lg:px-8 bg-black/20">
+    <section id="skills" className="relative z-10 px-5 py-16 lg:px-8">
       <div className="mx-auto max-w-5xl">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
           <SectionHeading

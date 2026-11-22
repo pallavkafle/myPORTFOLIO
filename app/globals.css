@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:focus-visible {
+  outline: 2px solid #34d399;
+  outline-offset: 2px;
+}
 :root {
   --bg: #0a0f0d;
   --bg-elevated: rgba(255, 255, 255, 0.05);
