@@ -5,16 +5,7 @@ import { GraduationCap, Award, ExternalLink } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Image from "next/image";
 
-const journeyItems: {
-  id: string;
-  type: "education" | "certificate";
-  title: string;
-  provider: string;
-  date: string;
-  description: string;
-  link: string | null;
-  image: string | null;
-}[] = [
+const journeyItems = [
   {
     id: "bachelor",
     type: "education",
@@ -31,9 +22,9 @@ const journeyItems: {
     title: "MERN Stack",
     provider: "Broadway Infosys",
     date: "Completed",
-    description: "45 hours.",
+    description: "45 hours. Comprehensive full-stack training.",
     link: null,
-    image: null,
+    image: null, 
   },
   {
     id: "gen-ai-cert",
@@ -41,20 +32,24 @@ const journeyItems: {
     title: "Generative AI & LLMs",
     provider: "Broadway Infosys",
     date: "Completed",
-    description: "45 hours.",
+    description: "45 hours. Deep dive into generative models.",
     link: null,
     image: null,
   },
-  {
-    id: "reserved",
-    type: "certificate",
-    title: "Reserved Slot",
-    provider: "",
-    date: "",
-    description: "",
-    link: null,
-    image: null,
-  }
+  // ==========================================
+  // TO ADD A NEW CERTIFICATE LATER:
+  // Uncomment and fill this out.
+  // ==========================================
+  // {
+  //   id: "new-cert-id",
+  //   type: "certificate",
+  //   title: "New Certificate",
+  //   provider: "Provider",
+  //   date: "Completed",
+  //   description: "Short description.",
+  //   link: "https://verify-link.com",
+  //   image: "/images/certs/new-cert.jpg",
+  // },
 ];
 
 export default function Journey() {
@@ -68,10 +63,12 @@ export default function Journey() {
         />
       </motion.div>
 
-      {/* Desktop: Horizontal timeline */}
+      {/* Desktop: Clean 3-column Grid */}
       <div className="relative mt-16 hidden md:block">
-        <div className="absolute top-[40%] left-0 right-0 h-px bg-white/10" />
-        <div className="grid grid-cols-4 gap-6">
+        {/* The connecting horizontal line */}
+        <div className="absolute top-[24px] left-10 right-10 h-px bg-white/10" />
+        
+        <div className="grid grid-cols-3 gap-12">
           {journeyItems.map((item, index) => (
             <motion.div
               key={item.id}
@@ -81,30 +78,31 @@ export default function Journey() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative flex flex-col items-center text-center"
             >
-              <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-full border border-emerald-400/30 bg-[#0a0f0d] z-10">
-                {item.type === "education" ? <GraduationCap size={16} className="text-emerald-400" /> : <Award size={16} className="text-gold" />}
+              {/* Icon */}
+              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full border border-emerald-400/30 bg-[#0a0f0d] z-10">
+                {item.type === "education" ? <GraduationCap size={20} className="text-emerald-400" /> : <Award size={20} className="text-gold" />}
               </div>
               
               <div className="flex w-full flex-col items-center">
-                <span className="font-mono text-xs uppercase tracking-widest text-emerald-400">{item.date}</span>
-                <h3 className="mt-2 text-lg font-serif text-text">{item.title}</h3>
-                <p className="mt-1 text-sm text-white/60">{item.provider}</p>
-                {item.description && <p className="mt-1 text-xs text-white/40">{item.description}</p>}
+                <span className="font-mono text-sm uppercase tracking-widest text-emerald-400 mb-2">{item.date}</span>
+                <h3 className="text-2xl font-serif text-text">{item.title}</h3>
+                <p className="mt-1 text-base text-white/80">{item.provider}</p>
+                {item.description && <p className="mt-2 text-sm text-white/50">{item.description}</p>}
 
-                {/* Landscape Certificate Image Placeholder */}
-                {item.type === "certificate" && item.id !== "reserved" && (
-                  <div className="mt-6 w-[115%] -ml-[7.5%] aspect-video overflow-hidden rounded-lg border border-white/10 bg-white/5 flex items-center justify-center relative">
+                {/* Big Certificate Image */}
+                {item.type === "certificate" && (
+                  <div className="mt-8 w-full aspect-[4/3] overflow-hidden rounded-xl border border-white/10 bg-white/5 flex items-center justify-center relative">
                     {item.image ? (
                       <Image src={item.image} alt={item.title} fill className="object-cover" />
                     ) : (
-                      <span className="font-mono text-xs text-white/40">Certificate image</span>
+                      <span className="font-mono text-sm text-white/30">Certificate image coming soon</span>
                     )}
                   </div>
                 )}
                 
                 {item.link && (
-                  <a href={item.link} target="_blank" rel="noreferrer" className="mt-3 inline-flex items-center gap-1 text-xs text-gold hover:text-white transition-colors">
-                    Verify <ExternalLink size={12} />
+                  <a href={item.link} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-gold hover:text-white transition-colors">
+                    Verify <ExternalLink size={14} />
                   </a>
                 )}
               </div>
@@ -116,7 +114,7 @@ export default function Journey() {
       {/* Mobile: Vertical timeline */}
       <div className="relative mt-12 md:hidden pl-6">
         <div className="absolute left-[7px] top-2 bottom-0 w-px bg-white/10" />
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-12">
           {journeyItems.map((item, index) => (
             <motion.div
               key={item.id}
@@ -126,28 +124,28 @@ export default function Journey() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative"
             >
-              <div className="absolute -left-[1.65rem] top-1 flex h-4 w-4 items-center justify-center rounded-full border border-emerald-400/30 bg-[#0a0f0d]">
-                <div className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              <div className="absolute -left-[1.65rem] top-1 flex h-5 w-5 items-center justify-center rounded-full border border-emerald-400/30 bg-[#0a0f0d]">
+                <div className="h-2 w-2 rounded-full bg-emerald-400" />
               </div>
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-2">
                 <span className="font-mono text-xs uppercase tracking-widest text-emerald-400">{item.date}</span>
-                <h3 className="text-xl font-serif text-text">{item.title}</h3>
-                <p className="text-sm text-white/60">{item.provider}</p>
-                {item.description && <p className="text-sm text-white/40">{item.description}</p>}
+                <h3 className="text-2xl font-serif text-text">{item.title}</h3>
+                <p className="text-base text-white/80">{item.provider}</p>
+                {item.description && <p className="text-sm text-white/50">{item.description}</p>}
                 
-                {item.type === "certificate" && item.id !== "reserved" && (
-                  <div className="mt-4 w-full aspect-video overflow-hidden rounded-lg border border-white/10 bg-white/5 flex items-center justify-center relative">
+                {item.type === "certificate" && (
+                  <div className="mt-4 w-full aspect-[4/3] overflow-hidden rounded-xl border border-white/10 bg-white/5 flex items-center justify-center relative">
                     {item.image ? (
                       <Image src={item.image} alt={item.title} fill className="object-cover" />
                     ) : (
-                      <span className="font-mono text-xs text-white/40">Certificate image</span>
+                      <span className="font-mono text-xs text-white/30">Certificate image coming soon</span>
                     )}
                   </div>
                 )}
 
                 {item.link && (
-                  <a href={item.link} target="_blank" rel="noreferrer" className="mt-2 inline-flex items-center gap-1 text-xs text-gold hover:text-white transition-colors">
-                    Verify <ExternalLink size={12} />
+                  <a href={item.link} target="_blank" rel="noreferrer" className="mt-2 inline-flex items-center gap-1.5 text-sm text-gold hover:text-white transition-colors">
+                    Verify <ExternalLink size={14} />
                   </a>
                 )}
               </div>
