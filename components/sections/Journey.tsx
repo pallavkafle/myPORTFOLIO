@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { GraduationCap, Award, ExternalLink } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Image from "next/image";
@@ -24,7 +25,7 @@ const journeyItems = [
     date: "Completed",
     description: "45 hours. Comprehensive full-stack training.",
     link: null,
-    image: null, 
+    image: null,
   },
   {
     id: "gen-ai-cert",
@@ -53,8 +54,16 @@ const journeyItems = [
 ];
 
 export default function Journey() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start center", "end center"],
+  });
+  const reducedMotion = useReducedMotion();
+  const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
   return (
-    <section id="journey" className="relative z-10 mx-auto max-w-6xl px-5 py-16 lg:px-8">
+    <section ref={ref} id="journey" className="relative z-10 mx-auto max-w-6xl px-5 py-16 lg:px-8">
       <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
         <SectionHeading
           label="Journey"
@@ -63,10 +72,15 @@ export default function Journey() {
         />
       </motion.div>
 
-      {/* Desktop: Clean 3-column Grid */}
+      {/* Desktop: Clean 3-column Grid with scroll-drawn line */}
       <div className="relative mt-16 hidden md:block">
-        {/* The connecting horizontal line */}
+        {/* Static background line */}
         <div className="absolute top-[24px] left-10 right-10 h-px bg-white/10" />
+        {/* Animated line */}
+        <motion.div 
+          style={{ scaleX: reducedMotion ? 1 : scaleX, transformOrigin: "left" }} 
+          className="absolute top-[24px] left-10 right-10 h-px bg-emerald-400" 
+        />
         
         <div className="grid grid-cols-3 gap-12">
           {journeyItems.map((item, index) => (
